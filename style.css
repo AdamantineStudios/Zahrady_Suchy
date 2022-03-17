@@ -1,0 +1,292 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 8vh;
+	background: #222;
+}
+
+
+/*FIXED NAVBAR IS THE ISSUE*/
+.nav {
+	position: fixed;
+  	background-color: #222;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	transition: all 0.3s ease-in-out;
+ 	opacity: 0.8;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+nav.active {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav.active a {
+  color: #000;
+}
+
+nav.active {
+  padding: 10px 0;
+}
+
+nav a.current,
+nav a:hover {
+  color: #39ff14;
+  font-weight: bold;
+}
+
+
+/*ALL WORKING TILL HERE*/
+
+.hero {
+  background: url(img/IMG_0511.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+  z-index: -2;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+
+
+
+/*ALL WORKING FROM HERE*/
+
+
+.logo {
+	color: rgb(226, 226, 226);
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-size: 20px;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: space-around;
+	width: 30%;
+}
+
+.nav-links li {
+	list-style: none;
+}
+
+.nav-links a {
+	color: rgb(226, 226, 226);
+	text-decoration: none;
+	letter-spacing: 3px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.burger {
+	display: none;
+	cursor: pointer;
+}
+
+.burger div {
+	width: 25px;
+	height: 3px;
+	background-color: rgb(226, 226, 226);
+	margin: 5px;
+	transition: all 0.3s ease;
+}
+
+
+/*Should fix this later*/
+@media screen and (max-width:1400px){
+	.nav-links {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width:768px){
+	body {
+		overflow-x: hidden;
+	}
+
+	.nav-links {
+		position: absolute;
+		 right: 0px;
+		 height: 92vh;
+		 top: 8vh;
+		 background: black;
+		 display: flex;
+		 flex-direction: column;
+		 align-items: center;
+		 width: 50%;
+		 transform: translateX(100%);
+		 transition: transform 0.5s ease-in;
+	}
+
+	.nav-links li {
+		opacity: 0;
+	}
+
+	.burger {
+		display: block;
+	}
+
+	nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+nav.active {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav.active a {
+  color: #fff;
+}
+
+nav.active {
+  padding: 10px 0;
+}
+
+nav a.current,
+nav a:hover {
+  color: #39ff14;
+  font-weight: bold;
+}
+
+}
+
+.nav-active {
+	transform: translateX(0%);
+}
+
+
+@keyframes navLinkFade {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+.toggle .line1 {
+	transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+	opacity: 0;
+}
+
+.toggle .line3 {
+	transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/*Working till here*/
+
+.hero h1 {
+  font-size: 46px;
+  margin: -20px 0 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.content h2,
+.content h3 {
+  font-size: 150%;
+  margin: 20px 0;
+}
+
+.content p {
+  color: #555;
+  line-height: 30px;
+  letter-spacing: 1.2px;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  background-color: rgba(71, 71, 71, 0.8);
+  /*position: fixed;*/
+  bottom: 0px;
+  width: 100%;
+  padding: 10px;
+}
+
+
+/*First page multipage setup*/
+.main_page_second {
+  height: 90vh;
+}
+
+.move_section {
+  margin-top: 3rem;
+}
+
+.main_page_third {
+  height: 100vh;
+}
+
+.main_page_fourth {
+  height: 100vh;
+}
+
+.main_page_fifth {
+  height: 100vh;
+}
+
+.footer_section {
+  background-color: black;
+  /*.height: 20vh;*/
+}
+
+.separate_contents {
+  padding-top: 20rem;
+}
+
+.separate_contents_footer {
+  padding-top: 30rem;
+}
+
+/*HERE PICTURE TEXT AND TEXT PICTURE CSS STYLE*/
+
+img {
+	width: 40%;
+}
