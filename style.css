@@ -54,7 +54,8 @@ nav a:hover {
 /*ALL WORKING TILL HERE*/
 
 .hero {
-  background: url('./img/IMG_0511.jpg');
+  /* background: url('./img/IMG_0511.jpg'); */
+  background-image: url(./img/IMG_0511.JPG);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
