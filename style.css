@@ -69,6 +69,13 @@ nav a:hover {
   z-index: -2;
 }
 
+.logo {
+	/* background: url(logos/z_s_full.png); */
+	/*background-size: cover;*/
+	/*height: 100vh;*/
+	
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -157,6 +164,10 @@ nav a:hover {
 
 	.burger {
 		display: block;
+	}
+
+	.burger div {
+		background-color: #39ff14;
 	}
 
 	nav a {
@@ -287,6 +298,227 @@ footer {
 
 /*HERE PICTURE TEXT AND TEXT PICTURE CSS STYLE*/
 
-img {
+.container {
+	color: white;
+  line-height: 30px;
+  letter-spacing: 1.2px;
+}
+
+
+.logo {
+	width: 8rem;
+    height: 3.2rem;
+    /* border-radius: 50%; */
+    overflow: hidden;
+    margin-top: -6px;
+}
+
+.picture-and-text {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 1.2rem;
+	width: 80%;
+}
+
+.text {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: #555;
+  line-height: 30px;
+  letter-spacing: 1.2px;
+  margin: 2.5rem;
+  width: auto;
+}
+
+.about_me {
+	color: #555;
+  line-height: 30px;
+  letter-spacing: 1.2px;
+}
+
+.our_services_heading {
+	color: #555;
+  line-height: 30px;
+  letter-spacing: 1.2px;
+  display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 2.5rem;
+}
+
+.picture {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+
+
+/* Responsive CSS Layout IMPORTANT */
+.container-edit {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 2fr 2fr;
+	grid-template-rows:  1fr 1fr 2fr 2fr 2fr 1fr;
+
+	/* Here just literally write what we want to have in each grid  -- I have to add to each class or id 'grid-area: content1;' for the content to label it*/
+
+	grid-template-areas:
+	"about about"
+	"our_services_content our_services_content"
+	"content1 content2"
+	"content3 content4"
+	"content5 content6"
+	"content7 content7";
+
+	grid-gap: 0.5rem;
+}
+
+
+.container h1 {
+	line-height: 3rem;
+}
+
+.content-styling {
+	/* border-radius: 8px; */
+	margin-top: 2.5rem;
+	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+.text-styling {
+	color: #555;
+	line-height: 30px;
+	letter-spacing: 1.2px;
+	padding: 1.3rem;
+}
+
+.content-styling-services {
+	margin-top: 2.5rem;
+	margin-bottom: 1.2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+.our_services_styling {
+	/* margin-right: 45%;
+	margin-left: 45%; */
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.content-styling-text {
+	margin-top: 2.5rem;
+	margin-bottom: 1.2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+#content1 {
+	/* background-image: url(logos/logo_svg_ZS_2.svg); */
+	grid-area: content1;
+	/* background-image: url(img/IMG_0134.JPG); */
+}
+#content2 {
+	grid-area: content2;
+}
+
+#content3 {
+	grid-area: content3;
+}
+
+#content4 {
+	grid-area: content4;
+}
+
+#content5 {
+	grid-area: content5;
+}
+
+#content6 {
+	grid-area: content6;
+}
+
+#content7 {
+	grid-area: content7;
+}
+
+#about {
+	grid-area: about;
+	border: 1px solid grey;
+	border-radius: 6px;
+}
+
+
+#our_services_content {
+	font-size: 2rem;
+	grid-area: our_services_content;
+}
+
+.footer-content {
+	background-color: rgb(104, 104, 104);
+}
+
+.text-styling-footer {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: black;
+	line-height: 30px;
+	letter-spacing: 1.2px;
+	padding: 1.3rem;
+}
+
+/* Handling pictures in Zig Zag */
+
+/* img {
 	width: 40%;
+	height: auto;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	margin-top: 2.5rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+
+img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	/* border-radius: 8px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.zig-zag-picture {
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 768px){
+	.container-edit {
+		grid-template-columns: 1fr;
+		/* Add amount of rows we need: 1pic / 1 text = 3x -- then we add some button bs and stuff */
+		grid-template-rows: 1fr 1fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
+		grid-template-areas:
+		"about"
+		"our_services_content" 
+		"content1"
+		"content2"
+		"content4"
+		"content3"
+		"content5"
+		"content6"
+		"content7";
+	}
+
+	/* Edit Padding for each content on phone so it appears closer to top */
+	.content-styling-text {
+		margin-top: 0.4rem;
+		margin-bottom: 04.rem;
+	}
 }
