@@ -285,12 +285,12 @@ footer {
 }
 
 .footer_section {
-  background-color: black;
+  	background-color: black;
   /*.height: 20vh;*/
 }
 
 .separate_contents {
-  padding-top: 20rem;
+  	padding-top: 20rem;
 }
 
 .separate_contents_footer {
@@ -301,8 +301,8 @@ footer {
 
 .container {
 	color: white;
-  line-height: 30px;
-  letter-spacing: 1.2px;
+  	line-height: 30px;
+  	letter-spacing: 1.2px;
 }
 
 
@@ -327,23 +327,23 @@ footer {
 	justify-content: space-around;
 	align-items: center;
 	color: #555;
-  line-height: 30px;
-  letter-spacing: 1.2px;
-  margin: 2.5rem;
-  width: auto;
+	line-height: 30px;
+	letter-spacing: 1.2px;
+	margin: 2.5rem;
+	width: auto;
 }
 
 .about_me {
 	color: #555;
-  line-height: 30px;
-  letter-spacing: 1.2px;
+  	line-height: 30px;
+  	letter-spacing: 1.2px;
 }
 
 .our_services_heading {
 	color: #555;
-  line-height: 30px;
-  letter-spacing: 1.2px;
-  display: flex;
+	line-height: 30px;
+	letter-spacing: 1.2px;
+	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	margin: 2.5rem;
@@ -377,6 +377,72 @@ footer {
 	grid-gap: 0.5rem;
 }
 
+.container-contact {
+	display: grid;
+	margin-top: 8vh;
+	height: 92vh;
+	grid-template-columns: 2fr 2fr;
+	grid-template-rows: 3fr 1fr;
+
+	grid-template-areas: 
+	"content10 content20"
+	"content30 content30";
+
+	grid-gap: 0.8rem;
+}
+
+/* Contact style */
+
+/* Edit this for phone view */
+.who-am-i-content {
+	margin-top: 1.5rem;
+	margin-bottom: 2.8rem;
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
+.who-am-i-heading {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 7%;
+}
+
+.contact-heading {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 7%;
+}
+
+.contact-content {
+	margin-top: 1.5rem;
+	margin-bottom: 2.8rem;
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
+#content10{
+	grid-area: content10;
+	border: 1px solid grey;
+	border-radius: 6px;
+	margin: 0.5rem;
+	margin-top: 20%;
+	margin-left: 5%;
+}
+
+#content20 {
+	grid-area: content20;
+	border: 1px solid grey;
+	border-radius: 6px;
+	margin: 0.5rem;
+	margin-top: 20%;
+	margin-right: 5%;
+}
+
+#content30 {
+	grid-area: content30;
+}
 
 .container h1 {
 	line-height: 3rem;
@@ -500,6 +566,11 @@ img {
 	border-radius: 10px;
 }
 
+.social-media-icons {
+	margin: 0.5rem;
+	margin-left: 1.2rem;
+}
+
 @media screen and (max-width: 768px){
 	.container-edit {
 		grid-template-columns: 1fr;
@@ -516,10 +587,90 @@ img {
 		"content6"
 		"content7";
 	}
+	.container-contact {
+		grid-template-columns: 1fr;
+		grid-template-rows: 2fr 1fr 1fr;
+		grid-template-areas: 
+		"content20"
+		"content10"
+		"content30";
+	}
 
 	/* Edit Padding for each content on phone so it appears closer to top */
 	.content-styling-text {
 		margin-top: 0.4rem;
 		margin-bottom: 04.rem;
 	}
+
+	#content10 {
+		grid-area: content10;
+		border: 1px solid grey;
+		border-radius: 6px;
+		margin: 0.5rem;
+	}
+	#content20 {
+		grid-area: content20;
+		border: 1px solid grey;
+		border-radius: 6px;
+		margin: 0.5rem;
+	}
+
+	.who-am-i-content {
+		margin: 5%;
+	}
+
+	.who-am-i-heading {
+		margin-bottom: 0.5rem;
+	}
+
+	.text-styling {
+		padding: 0.5rem;
+	}
+
+	.contact-heading {
+		margin-top: 10%;
+	}
+
+	.social-media-icons {
+		margin: 0.5rem;
+	}
+
 }
+
+/* Style Icons */
+/* Style all font awesome icons */
+.fa {
+	padding: 20px;
+	font-size: 30px;
+	width: 50px;
+	text-align: center;
+	text-decoration: none;
+  }
+  
+  /* Add a hover effect if you want */
+  .fa:hover {
+	opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+  
+  /* Facebook */
+  .fa-facebook {
+	background: #3B5998;
+	color: white;
+  }
+  
+  /* Twitter */
+  .fa-twitter {
+	background: #55ACEE;
+	color: white;
+  }
+
+  .fa-instagram {
+	background: #cc183f;
+	color: white;
+  }
+  .fac {
+	  border-radius: 8px;
+  }
+
