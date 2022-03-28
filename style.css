@@ -571,6 +571,11 @@ img {
 	margin-left: 1.2rem;
 }
 
+.button {
+	border-radius: 8px;
+	opacity: 0.5;
+}
+
 @media screen and (max-width: 768px){
 	.container-edit {
 		grid-template-columns: 1fr;
@@ -674,3 +679,52 @@ img {
 	  border-radius: 8px;
   }
 
+
+
+  /* A Button CSS */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* * {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+} */
+
+
+.button-part {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+ 
+.btn {
+	cursor: pointer;
+	display: inline-block;
+	width: 100%;
+	background: #555;
+	color: black;
+	padding: 15px;
+	font-family: inherit;
+	font-size: 16px;
+	border: 0;
+	border-radius: 5px;
+	margin: 1rem;
+  }
+  
+  .btn:focus {
+	outline: 0;
+  }
+  
+  .btn:active {
+	transform: scale(0.98);
+  }
