@@ -7,6 +7,10 @@
 	font-family: 'Raleway', sans-serif;
 }
 
+.grey-background {
+	background-color: rgb(214, 214, 214);
+}
+
 nav {
 	display: flex;
 	justify-content: space-around;
@@ -69,7 +73,6 @@ nav a:hover {
   align-items: center;
   text-align: center;
   position: relative;
-  margin-bottom: 20px;
   z-index: -2;
 }
 
@@ -459,8 +462,9 @@ footer {
 
 /* Responsive CSS Layout IMPORTANT */
 .container-edit {
+	background-color: rgb(214, 214, 214);
 	display: grid;
-	height: 100vh;
+	max-height: 100vh;
 	grid-template-columns: 2fr 2fr;
 	grid-template-rows:  1fr 1fr 2fr 2fr 2fr 1fr 1fr 1fr;
 
@@ -476,6 +480,10 @@ footer {
 	"content7 content7";
 
 	/* grid-gap: 0.5rem; */
+}
+
+body {
+	background-color: rgb(214, 214, 214);
 }
 
 #content8 {
