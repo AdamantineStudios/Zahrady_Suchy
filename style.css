@@ -606,6 +606,7 @@ body {
 	/* background-image: url(logos/logo_svg_ZS_2.svg); */
 	grid-area: content1;
 	margin-left: 15rem;
+	opacity: 0.6;
 	/* margin-left: 20%; */
 	/* background-image: url(img/IMG_0134.JPG); */
 }
