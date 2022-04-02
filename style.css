@@ -736,6 +736,10 @@ img {
 		"content7";
 	}
 
+	.email-text-fix {
+		font-size: 1.3rem;
+	}
+
 	/* Edit Padding for each content on phone so it appears closer to top */
 	.content-styling-text {
 		margin-top: 0.4rem;
@@ -838,6 +842,16 @@ img {
 	.container-edit {
 		/* margin-left: 1rem;
 		margin-right: 1rem; */
+	}
+	.email-text-fix {
+		font-size: 1.1rem;
+	}
+}
+
+
+@media screen and (max-width: 282px){
+	.email-text-fix {
+		font-size: 0.8rem;
 	}
 }
 
