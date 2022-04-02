@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
 * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	font-family: 'Raleway', sans-serif;
 }
 
 nav {
@@ -46,8 +49,8 @@ nav.active {
 
 nav a.current,
 nav a:hover {
-  color: #39ff14;
-  font-weight: bold;
+	color: rgb(143, 157, 36);
+  	font-weight: bold;
 }
 
 
@@ -168,7 +171,7 @@ nav a:hover {
 	}
 
 	.burger div {
-		background-color: #39ff14;
+		background-color: rgb(143, 157, 36);
 	}
 
 	nav a {
@@ -193,9 +196,10 @@ nav.active {
 
 nav a.current,
 nav a:hover {
-  color: #39ff14;
-  font-weight: bold;
+	color: rgb(143, 157, 36);
+  	font-weight: bold;
 }
+
 
 }
 
@@ -314,6 +318,11 @@ footer {
     margin-top: -6px;
 }
 
+.logo {
+	width: 175px;
+	height: auto;
+}
+
 .picture-and-text {
 	display: flex;
 	justify-content: space-around;
@@ -424,20 +433,20 @@ footer {
 
 #content10{
 	grid-area: content10;
-	border: 1px solid grey;
+	border: 1px solid rgb(125, 138, 29);
 	border-radius: 6px;
 	margin: 0.5rem;
 	margin-top: 20%;
-	margin-left: 5%;
+	margin-left: 20%;
 }
 
 #content20 {
 	grid-area: content20;
-	border: 1px solid grey;
+	border: 1px solid rgb(125, 138, 29);
 	border-radius: 6px;
 	margin: 0.5rem;
 	margin-top: 20%;
-	margin-right: 5%;
+	margin-right: 20%;
 }
 
 #content30 {
@@ -459,10 +468,11 @@ footer {
 }
 
 .text-styling {
-	color: #555;
-	line-height: 30px;
-	letter-spacing: 1.2px;
-	padding: 1.3rem;
+	color: rgb(58, 58, 58);
+	line-height: 35px;
+	letter-spacing: 1.5px;
+	padding: 1.4rem;
+	font-size: 25px;
 }
 
 .content-styling-services {
@@ -490,26 +500,38 @@ footer {
 #content1 {
 	/* background-image: url(logos/logo_svg_ZS_2.svg); */
 	grid-area: content1;
+	margin-left: 15rem;
+	/* margin-left: 20%; */
 	/* background-image: url(img/IMG_0134.JPG); */
 }
 #content2 {
 	grid-area: content2;
+	margin-right: 15rem;
+	/* margin-right: 20%; */
 }
 
 #content3 {
 	grid-area: content3;
+	margin-left: 15rem;
+	/* margin-left: 20%; */
 }
 
 #content4 {
 	grid-area: content4;
+	margin-right: 15rem;
+	/* margin-right: 20%; */
 }
 
 #content5 {
 	grid-area: content5;
+	margin-left: 15rem;
+	/* margin-left: 20%; */
 }
 
 #content6 {
 	grid-area: content6;
+	margin-right: 15rem;
+	/* margin-right: 20%; */
 }
 
 #content7 {
@@ -518,8 +540,10 @@ footer {
 
 #about {
 	grid-area: about;
-	border: 1px solid grey;
+	border: 1px solid rgb(125, 138, 29);
 	border-radius: 6px;
+	margin-left: 15rem;
+	margin-right: 15rem;
 }
 
 
@@ -558,6 +582,7 @@ img {
 	width: 100%;
 	height: auto;
 	border-radius: 10px;
+	align-items: center;
 	/* border-radius: 8px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
@@ -575,6 +600,8 @@ img {
 	border-radius: 8px;
 	opacity: 0.5;
 }
+
+
 
 @media screen and (max-width: 768px){
 	.container-edit {
@@ -618,6 +645,7 @@ img {
 		border: 1px solid grey;
 		border-radius: 6px;
 		margin: 0.5rem;
+		margin-top: 2.5rem;
 	}
 
 	.who-am-i-content {
@@ -640,7 +668,74 @@ img {
 		margin: 0.5rem;
 	}
 
+	#about{
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+
+	#content1 {
+		/* background-image: url(logos/logo_svg_ZS_2.svg); */
+		grid-area: content1;
+		margin-left: 1rem;
+		/* background-image: url(img/IMG_0134.JPG); */
+	}
+	/* #content2 {
+		grid-area: content2;
+		margin-right: 1rem;
+	}
+	
+	#content3 {
+		grid-area: content3;
+		margin-left: 1rem;
+	}
+	
+	#content4 {
+		grid-area: content4;
+		margin-right: 1rem;
+	}
+	
+	#content5 {
+		grid-area: content5;
+		margin-left: 1rem;
+	}
+	
+	#content6 {
+		grid-area: content6;
+		margin-right: 1rem;
+	} */
+
 }
+
+@media screen and (max-width: 1268px){
+
+	/* #about {
+		margin-left: 3rem;
+		margin-right: 3rem;
+	} */
+
+	.container-edit {
+		margin-left: 3rem;
+		margin-right: 3rem;
+	}
+}
+
+
+@media screen and (max-width: 1024px){
+
+	/* #about {
+		margin-left: 3rem;
+		margin-right: 3rem;
+	} */
+
+	.container-edit {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+}
+
+
+
+
 
 /* Style Icons */
 /* Style all font awesome icons */
@@ -728,3 +823,68 @@ body {
   .btn:active {
 	transform: scale(0.98);
   }
+
+
+  @media screen and (max-width: 1080px) {
+
+	#about {
+		margin-left: 2.5rem;
+		margin-right: 2.5rem;
+	}
+
+  }
+
+  @media screen and (max-width: 1600px) {
+
+	#content1 {
+		margin-left: 1.2rem;
+	}
+
+	#content2 {
+		margin-right: 1.2rem;
+	}
+
+	#content3 {
+		margin-left: 1.2rem;
+	}
+
+	#content4 {
+		margin-right: 1.2rem;
+	}
+
+	#content5 {
+		margin-left: 1.2rem;
+	}
+
+	#content6 {
+		margin-right: 1.2rem;
+	}
+
+	#about {
+		margin-right: 1.2rem;
+		margin-left: 1.2rem;
+	}
+
+  }
+
+.social_no_styling {
+	text-decoration: none;
+	color: rgb(143, 157, 36);
+	
+}
+
+.our_services_styling h1 {
+	color: rgb(125, 138, 29);
+}
+
+.custom-heading h1 {
+	color: rgb(125, 138, 29);
+}
+
+.about_heading h1 {
+	color: rgb(125, 138, 29)
+}
+
+.container-contact h1 {
+	color: rgb(125, 138, 29)
+}
