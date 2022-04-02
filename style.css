@@ -411,6 +411,7 @@ footer {
 .logo {
 	width: 175px;
 	height: auto;
+	padding-top: 13px;
 }
 
 .picture-and-text {
