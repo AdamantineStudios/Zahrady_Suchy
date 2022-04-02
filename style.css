@@ -461,7 +461,7 @@ footer {
 	display: grid;
 	height: 100vh;
 	grid-template-columns: 2fr 2fr;
-	grid-template-rows:  1fr 1fr 2fr 2fr 2fr 1fr;
+	grid-template-rows:  1fr 1fr 2fr 2fr 2fr 1fr 1fr 1fr;
 
 	/* Here just literally write what we want to have in each grid  -- I have to add to each class or id 'grid-area: content1;' for the content to label it*/
 
@@ -471,9 +471,14 @@ footer {
 	"content1 content2"
 	"content3 content4"
 	"content5 content6"
+	"content8 content8"
 	"content7 content7";
 
-	grid-gap: 0.5rem;
+	/* grid-gap: 0.5rem; */
+}
+
+#content8 {
+	grid-area: 	content8;
 }
 
 .container-contact {
@@ -481,11 +486,12 @@ footer {
 	margin-top: 8vh;
 	height: 92vh;
 	grid-template-columns: 2fr 2fr;
-	grid-template-rows: 3fr 1fr;
+	grid-template-rows: 3fr 1fr 1fr;
 
 	grid-template-areas: 
 	"content10 content20"
-	"content30 content30";
+	"content30 content30"
+	"content7 content7";
 
 	grid-gap: 0.8rem;
 }
@@ -697,7 +703,7 @@ img {
 	.container-edit {
 		grid-template-columns: 1fr;
 		/* Add amount of rows we need: 1pic / 1 text = 3x -- then we add some button bs and stuff */
-		grid-template-rows: 1fr 1fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr 1fr;
 		grid-template-areas:
 		"about"
 		"our_services_content" 
@@ -707,15 +713,17 @@ img {
 		"content3"
 		"content5"
 		"content6"
+		"content8"
 		"content7";
 	}
 	.container-contact {
 		grid-template-columns: 1fr;
-		grid-template-rows: 2fr 1fr 1fr;
+		grid-template-rows: 2fr 1fr 1fr 1fr;
 		grid-template-areas: 
 		"content20"
 		"content10"
-		"content30";
+		"content30"
+		"content7";
 	}
 
 	/* Edit Padding for each content on phone so it appears closer to top */
@@ -804,8 +812,8 @@ img {
 	} */
 
 	.container-edit {
-		margin-left: 3rem;
-		margin-right: 3rem;
+		/* margin-left: 3rem;
+		margin-right: 3rem; */
 	}
 }
 
@@ -818,8 +826,8 @@ img {
 	} */
 
 	.container-edit {
-		margin-left: 1rem;
-		margin-right: 1rem;
+		/* margin-left: 1rem;
+		margin-right: 1rem; */
 	}
 }
 
@@ -896,14 +904,15 @@ body {
 	cursor: pointer;
 	display: inline-block;
 	width: 100%;
-	background: #555;
+	background: rgb(125, 138, 29);;
 	color: black;
 	padding: 15px;
 	font-family: inherit;
 	font-size: 16px;
 	border: 0;
 	border-radius: 5px;
-	margin: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
   }
   
   .btn:focus {
