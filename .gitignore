@@ -1,0 +1,13 @@
+# závislosti
+node_modules/
+
+# next.js
+.next/
+out/
+*.tsbuildinfo
+
+# generované fotky (vyrábí je scripts/prepare-photos.mjs)
+public/photos/
+
+# systémové soubory
+.DS_Store

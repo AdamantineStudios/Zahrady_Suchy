@@ -1,0 +1,288 @@
+{
+  "cerstva-vysadba-mulc": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "chodnik-zahony-trvalek": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "detske-hriste-houpacky": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "dvorek-lavicky": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "kaceni-jehlicnanu": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "kruhove-posezeni-spalky": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "navrh-zahrady-plan": {
+    "width": 794,
+    "height": 677,
+    "widths": [
+      480,
+      794
+    ]
+  },
+  "navrh-zahrady-plan-cb": {
+    "width": 794,
+    "height": 677,
+    "widths": [
+      480,
+      794
+    ]
+  },
+  "nova-zahrada-terasa": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "posezeni-pod-brizou": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "pozemek-pred-realizaci": {
+    "width": 3506,
+    "height": 2059,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "prazcove-schody-detail": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "predzahradka-gabiony-vysadba": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "predzahradka-slapaky": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "predzahradka-zed": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "prorezavka-keru": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "rez-stromu-vyska": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "schody-prazce-balvany": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "sterkova-plocha-hotovo": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "sterkova-plocha-svah": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "sterkovy-zahon-balvany": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "sucha-zidka-stavba": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "terenni-upravy-svah": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "vycisteny-pozemek": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "vysadba-u-zdi": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "zahon-denivky-detail": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "zahon-u-terasy-gabiony": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "zahrada-trvalky-podzim": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "zalozeni-zahonu-kruh": {
+    "width": 3264,
+    "height": 2448,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  }
+}
