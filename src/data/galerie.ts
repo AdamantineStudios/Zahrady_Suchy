@@ -60,9 +60,9 @@ export const GALERIE: GalerieFoto[] = [
   },
   {
     foto: "dvorek-lavicky",
-    alt: "Proměněný vnitroblok s lavičkami a novými výsadbami",
+    alt: "Lavičky se stolkem u zdi mezi nově založenými záhony a mladými stromy",
     kategorie: "realizace",
-    popisek: "Vnitroblok po proměně",
+    popisek: "Posezení mezi mladými výsadbami",
   },
   {
     foto: "detske-hriste-houpacky",
@@ -149,7 +149,7 @@ export const PROMENY: Promena[] = [
     po: "sterkova-plocha-hotovo",
     altPred: "Terénní úpravy zarostlého svahu v průběhu prací",
     altPo: "Dokončená zpevněná štěrková plocha ve svahu",
-    popisek: "Ze zarostlého svahu zpevněná plocha na posezení",
+    popisek: "Terénní úpravy v lesním svahu — od výkopu po zpevněnou plochu",
   },
   {
     pred: "zalozeni-zahonu-kruh",
