@@ -16,7 +16,7 @@ export default function JsonLd() {
     email: SITE.email,
     telephone: SITE.telefonHref,
     url: absoluteUrl("/"),
-    image: absoluteUrl("/og.png"),
+    image: absoluteUrl("/og.jpg"),
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.adresa.ulice,

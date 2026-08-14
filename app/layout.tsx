@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: `${SITE.name} — návrhy, realizace a údržba zahrad`,
     description: SITE.description,
     images: [
-      { url: absoluteUrl("/og.png"), width: 1200, height: 630, alt: SITE.name },
+      { url: absoluteUrl("/og.jpg"), width: 1200, height: 630, alt: SITE.name },
     ],
   },
   icons: { apple: withBase("/apple-icon.png") },
