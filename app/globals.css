@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  /* Papír a inkoust — kontrasty na cream ověřené (WCAG):
+     ink 13.9:1 (AAA), muted 7.2:1 (AAA), moss-deep 9.0:1 (AAA) */
+  --color-cream: #faf7f0; /* pozadí stránky */
+  --color-paper: #fffefa; /* karty */
+  --color-sunken: #f2ede2; /* zapuštěné pásy sekcí */
+  --color-ink: #1f2a21; /* zelenočerný text (kotví k #1d1d1b z loga) */
+  --color-muted: #49564a; /* sekundární text */
+  --color-line: #e4dfd2; /* linky a rámečky (dekor, ne text) */
+
+  /* Značková olivová z loga — POUZE dekor (2.8:1 na cream, nikdy nenese text) */
+  --color-olive: #8f9d24;
+  --color-olive-soft: #eef0d8; /* tintové pozadí; ink na ní 12.8:1 */
+
+  /* Interaktivní zelené (tmavší olivová řada, drží odstín značky):
+     moss — bílý text 6.3:1 AA, jako text na cream 5.9:1 AA
+     moss-deep — hover a odkazy, bílý text 9.6:1, na cream 9.0:1 */
+  --color-moss: #57661c;
+  --color-moss-deep: #3e4a12;
+
+  --font-display: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+
+  --shadow-soft:
+    0 1px 2px rgb(31 42 33 / 0.05), 0 10px 30px -12px rgb(31 42 33 / 0.15);
+  --shadow-lift:
+    0 2px 6px rgb(31 42 33 / 0.07), 0 20px 45px -15px rgb(31 42 33 / 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+::selection {
+  background: var(--color-olive-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 3px;
+}
+
+.font-display {
+  letter-spacing: -0.01em;
+}
+
+/* Jemný papírový šum přes hero a CTA pásy */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* Odhalovací animace — aktivní jen s JS (bez JS je obsah rovnou vidět) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
