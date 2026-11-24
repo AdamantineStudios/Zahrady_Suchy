@@ -26,15 +26,21 @@ Po úpravě: commit + push do `main` → web se sám přebuilduje a nasadí
 
 ### Přidání nové fotky
 
-1. Vložte JPG do `photos-src/` s rozumným názvem bez diakritiky a mezer,
-   např. `zahrada-jarni-zahon.jpg`.
-2. Spusťte `npm run photos` — vygeneruje zmenšené WebP verze a
-   **odstraní EXIF metadata včetně GPS polohy zahrady klienta**.
-3. Přidejte záznam do `src/data/galerie.ts` s krátkým popisem (`alt`)
+1. Zkopírujte fotky (JPG, PNG) do složky `photos-inbox/` — název nevadí,
+   klidně `IMG_1234.JPG` nebo `Zahrada u Nováků.jpg`.
+2. Spusťte `npm run photos:import` — fotky narovná, zmenší na nejvýš
+   3000 px, **odstraní všechna metadata včetně GPS polohy zahrady klienta**
+   a uloží je do `photos-src/` pod webovým názvem bez diakritiky.
+3. Spusťte `npm run photos` — vygeneruje zmenšené WebP verze pro web.
+4. Přidejte záznam do `src/data/galerie.ts` s krátkým popisem (`alt`)
    toho, co na fotce opravdu je.
 
-Originály v `photos-src/` se na web nikdy nedostanou — publikují se jen
-zmenšené, očištěné verze z `public/photos/` (ty se negenerují do gitu).
+**Proč přes import:** repozitář je veřejný, takže originál s GPS by si kdokoli
+mohl stáhnout z GitHubu a zjistit adresu klienta. Build to hlídá — fotka
+s polohou v `photos-src/` ho zastaví (`npm run photos:check`). Složka
+`photos-inbox/` se do gitu nikdy nedostane.
+
+Na fotkách hlídejte i obličeje klientů a dětí, SPZ aut a čitelná čísla domů.
 
 ---
 
@@ -63,25 +69,39 @@ Pull requesty prochází build kontrolou přes `.github/workflows/ci.yml`.
 
 ## Přepnutí na vlastní doménu zahradysuchy.cz
 
-Doména dnes ukazuje na starý web u původního hostingu. Přepnutí na
-GitHub Pages (zdarma, bez výpadku — starý web běží, dokud se nepřepne
-DNS):
+Doména dnes ukazuje na starý web u původního hostingu. Přepnutí je
+**jen nastavení, žádná změna kódu** — build si cestu i doménu bere
+z nastavení GitHub Pages. Celé zabere asi 15 minut:
 
-1. U registrátora domény nastavte DNS:
+1. *(Doporučeno, jednorázově)* Ověřte doménu na GitHubu: profil
+   AdamantineStudios → **Settings → Pages → Add a domain** → přidejte u
+   registrátora TXT záznam, který GitHub ukáže. Zabrání tomu, aby si doménu
+   „půjčil" cizí GitHub účet.
+2. V repu **Settings → Pages → Custom domain** vyplňte `zahradysuchy.cz` → Save.
+3. **Actions → Deploy to GitHub Pages → Run workflow** — web se sestaví pro
+   novou doménu.
+4. U poskytovatele DNS domény (tam, kde se spravují záznamy):
    - `A` záznamy pro `zahradysuchy.cz` → `185.199.108.153`,
      `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+     (staré `A` záznamy smažte)
    - `CNAME` pro `www` → `adamantinestudios.github.io`
-2. V repu **Settings → Pages → Custom domain** vyplňte
-   `zahradysuchy.cz` a po ověření zapněte **Enforce HTTPS**.
-3. V `.github/workflows/deploy.yml` přidejte do kroku `npm run build`:
-   ```yaml
-   env:
-     NEXT_PUBLIC_BASE_PATH: ""
-   ```
-4. V `src/config.ts` změňte `origin` na `https://zahradysuchy.cz`.
+   - **Neměňte MX záznamy ani nameservery** — jinak přestane chodit
+     e-mail na simon@zahradysuchy.cz.
 
-Vše ostatní (odkazy, sitemap, OG náhledy) se přizpůsobí samo — všechny
-URL procházejí přes `withBase()`/`absoluteUrl()` v `src/config.ts`.
+   Kroky 2–4 udělejte najednou: od kroku 2 přesměrovává stará adresa
+   github.io na doménu, a ta do kroku 4 ukazuje ještě starý web.
+5. Až GitHub u domény ukáže zelenou fajfku, zapněte **Enforce HTTPS**
+   (certifikát bývá do hodiny).
+6. Vyzkoušejte https://zahradysuchy.cz, www.zahradysuchy.cz i starou adresu,
+   pošlete zkušební e-mail na simon@ a naskenujte QR kód. Pak teprve tisk.
+
+Odkazy, sitemap, kanonické URL i náhledy pro sdílení se přizpůsobí samy.
+
+## QR kód na auto a letáky
+
+Hotové soubory a pravidla pro tiskárnu jsou ve složce
+[`marketing/qr/`](marketing/qr/README.md). Kód vede na https://zahradysuchy.cz
+— **tiskněte až po přepnutí domény** (viz výše).
 
 ## Soukromí
 
@@ -100,7 +120,9 @@ app/                  stránky (App Router) + globals.css
 src/components/       Header, Footer, galerie, formulář, před/po…
 src/data/             VŠECHNY editovatelné texty a seznamy fotek
 src/config.ts         kontakty, adresa, doména
-photos-src/           originály fotek (nikdy nejdou ven)
-scripts/              fotopipeline + generátor ikon/OG
+photos-src/           fotky pro web, bez metadat (zdroj pro WebP verze)
+photos-inbox/         nové fotky před importem (mimo git)
+scripts/              import a kontrola fotek, fotopipeline, ikony/OG, QR kód
+marketing/qr/         QR kód na auto a letáky + pravidla pro tisk
 .github/workflows/    CI + nasazení na Pages
 ```

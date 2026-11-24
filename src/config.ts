@@ -16,8 +16,10 @@ export const SITE = {
   /** Sociální sítě zatím nejsou — po založení sem stačí doplnit URL. */
   instagram: "",
   facebook: "",
-  /** Doména, na které web běží (bez basePath). */
-  origin: "https://adamantinestudios.github.io",
+  /** Doména, na které web běží (bez basePath) — dodává ji next.config.ts. */
+  origin: process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://adamantinestudios.github.io",
+  /** Cílová doména webu — kódují ji QR kódy na autě a letácích. */
+  domena: "zahradysuchy.cz",
 } as const;
 
 /** Cesta, pod kterou web běží (GitHub Pages: „/Zahrady_Suchy", vlastní doména: „"). */
