@@ -33,7 +33,7 @@ export default function Faq({
               {ZAVOLAT.label}
             </a>
             <div className="frame frame--photo col-foto">
-              <Photo name={foto} alt={alt(foto)} className="frame__img" sizes={sizesFor(foto, 519, 380)} />
+              <Photo name={foto} alt={alt(foto)} className="frame__img" sizes={sizesFor(foto, 519, 380, [342, 560])} />
             </div>
           </div>
           <div className="faq span-6 start-7">

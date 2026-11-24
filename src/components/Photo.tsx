@@ -14,10 +14,12 @@ export function ratio(name: PhotoName): number {
 /**
  * `sizes` pro fotku ořezanou do rámečku w × h (CSS px na počítači): prohlížeč vybírá
  * zdroj podle šířky, ale ořez „cover" potřebuje šířku max(w, h × poměr stran).
+ * `phone` je buď hotová hodnota (výchozí 100vw), nebo rámeček [w, h] na telefonu.
  */
-export function sizesFor(name: PhotoName, w: number, h: number, phone = "100vw"): string {
-  const need = Math.ceil(Math.max(w, h * ratio(name)) / 20) * 20;
-  return `(min-width: 1024px) ${need}px, ${phone}`;
+export function sizesFor(name: PhotoName, w: number, h: number, phone: string | [number, number] = "100vw"): string {
+  const need = (bw: number, bh: number) => Math.ceil(Math.max(bw, bh * ratio(name)) / 20) * 20;
+  const small = typeof phone === "string" ? phone : `${need(phone[0], phone[1])}px`;
+  return `(min-width: 1024px) ${need(w, h)}px, ${small}`;
 }
 
 type Props = {
