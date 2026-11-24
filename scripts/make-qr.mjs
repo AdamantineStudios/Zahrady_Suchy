@@ -139,7 +139,7 @@ try {
 if (chromium) {
   const fonts = (await Promise.all([
     ...fontFace("Lora", "lora", 400),
-    ...fontFace("Hanken Grotesk", "hanken-grotesk", 400),
+    ...fontFace("Nunito Sans", "nunito-sans", 400),
   ])).join("");
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -161,7 +161,7 @@ if (chromium) {
 
   const badge =
     `<div style="box-sizing:border-box;width:70mm;height:92mm;padding:6mm;border:0.3mm solid #e4dfd2;` +
-    `border-radius:4mm;display:flex;flex-direction:column;align-items:center;font-family:'Hanken Grotesk'">` +
+    `border-radius:4mm;display:flex;flex-direction:column;align-items:center;font-family:'Nunito Sans'">` +
     qrSvg({ color: INK, logo: true, size: "58mm" }) +
     `<div style="font-family:Lora;font-size:19pt;color:${INK};margin-top:3.2mm;letter-spacing:-0.01em">zahradysuchy.cz</div>` +
     `<div style="font-size:9.5pt;line-height:1.35;color:#49564a;margin-top:1.6mm;text-align:center;text-wrap:balance">Naskenujte a prohlédněte si naše zahrady</div></div>`;

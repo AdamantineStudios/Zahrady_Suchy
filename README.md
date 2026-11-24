@@ -3,8 +3,9 @@
 Web zahradnické firmy **Zahrady Suchý** — návrhy, realizace a údržba
 zahrad v Českých Budějovicích a po celém Jihočeském kraji.
 
-**Stack:** Next.js 15 (App Router, statický export) · Tailwind CSS 4 ·
-TypeScript · sharp (fotky) · GitHub Actions → GitHub Pages
+**Stack:** Next.js 15 (App Router, statický export) · TypeScript ·
+designový kit [taste-skill](https://github.com/leonxlnx/taste-skill) 2.5.1 (CSS a JS
+v `public/assets/`) · sharp (fotky) · GitHub Actions → GitHub Pages
 
 ---
 
@@ -15,10 +16,11 @@ Nejčastější věci, které budete chtít změnit — vždy jeden soubor:
 | Co změnit | Kde |
 | --- | --- |
 | **Telefon, e-mail, adresa, IČO** | `src/config.ts` — objekt `SITE` |
-| **Texty služeb** (karty na úvodu) | `src/data/sluzby.ts` |
-| **Fotky v galerii + popisky** | `src/data/galerie.ts` — každá fotka je blok `{ foto, alt, kategorie, popisek }` |
-| **Proměny před/po** | `src/data/galerie.ts` — pole `PROMENY` |
-| **Časté otázky** | `src/data/faq.ts` |
+| **Texty služeb** (řádky na úvodu) | `src/data/sluzby.ts` |
+| **Fotky v galerii** | `src/data/galerie.ts` — jména fotek po kategoriích (plné řady: 6, 6, 4) |
+| **Popis fotky** (alt text) | `src/data/fotky.ts` — jeden řádek na fotku, co na ní opravdu je |
+| **Příběh svahu** (galerie) | `src/data/galerie.ts` — pole `SVAH` |
+| **Časté otázky** | `src/data/faq.ts` — odpovědi jsou na webu vždy otevřené |
 | **Delší texty stránek** | `app/<stránka>/page.tsx` |
 
 Po úpravě: commit + push do `main` → web se sám přebuilduje a nasadí
@@ -32,8 +34,8 @@ Po úpravě: commit + push do `main` → web se sám přebuilduje a nasadí
    3000 px, **odstraní všechna metadata včetně GPS polohy zahrady klienta**
    a uloží je do `photos-src/` pod webovým názvem bez diakritiky.
 3. Spusťte `npm run photos` — vygeneruje zmenšené WebP verze pro web.
-4. Přidejte záznam do `src/data/galerie.ts` s krátkým popisem (`alt`)
-   toho, co na fotce opravdu je.
+4. Přidejte jméno fotky do kategorie v `src/data/galerie.ts` a jeden řádek
+   s popisem (alt) do `src/data/fotky.ts` — bez popisu build spadne.
 
 **Proč přes import:** repozitář je veřejný, takže originál s GPS by si kdokoli
 mohl stáhnout z GitHubu a zjistit adresu klienta. Build to hlídá — fotka
@@ -107,17 +109,34 @@ Hotové soubory a pravidla pro tiskárnu jsou ve složce
 
 - Web nepoužívá cookies, analytiku ani externí služby — fonty i skripty
   se servírují z vlastní domény, žádná cookie lišta není potřeba.
-- Poptávkový formulář jen připraví e-mail v poštovní aplikaci
-  návštěvníka (`mailto:`) — na serveru se nic neukládá; rozepsaná
-  poptávka zůstává jen v prohlížeči návštěvníka (localStorage).
+- Poptávkový formulář otevře poštovní aplikaci návštěvníka (`mailto:`)
+  s vyplněnými poli — nic se neukládá na serveru ani v prohlížeči. Když se
+  pošta neotevře, tlačítko „Zkopírovat text poptávky" dá text do schránky.
 - Fotky se při buildu přeukládají a **EXIF (včetně GPS souřadnic zahrad
   klientů a data pořízení) se zahazuje**.
+
+## Vzhled: kit taste-skill
+
+Rozvržení, typografie a pohyb stojí na kitu
+[taste-skill](https://github.com/leonxlnx/taste-skill) 2.5.1 (licence MIT):
+
+- **`public/assets/` se NEUPRAVUJE** — soubory kitu jsou bajt po bajtu zkopírované
+  (viz `public/assets/README.md`). Vlastní vzhled patří do `app/globals.css`.
+- Každá sekce je přesně jedna (nebo dvě) obrazovky; sousední sekce se liší rozvržením.
+- Písma Lora (nadpisy) a Nunito Sans (text), barvy ze Šimonova loga — tokeny `--p-*`
+  v `app/globals.css`.
+- Na každé stránce jeden „moment" při posouvání: úvod — proměna zahrady (kapitoly)
+  a vyvolání fotky, návrh — zvýrazněný výrok, realizace — kroky se střídající fotkou,
+  údržba — vyvolání fotky, galerie — proměna svahu, kontakt — Šimonova slova.
+  Kdo má v systému omezené animace, vidí vše hned v klidu.
+- Hlavní akce je všude stejnými slovy: **Domluvit schůzku** (`AKCE` v `src/components/Site.tsx`).
 
 ## Struktura
 
 ```
-app/                  stránky (App Router) + globals.css
-src/components/       Header, Footer, galerie, formulář, před/po…
+app/                  stránky (App Router) + globals.css (vlastní CSS nad kitem)
+public/assets/        kit taste-skill — NEUPRAVOVAT
+src/components/       Site (lišta, závěr, patička), hero, galerie, FAQ…
 src/data/             VŠECHNY editovatelné texty a seznamy fotek
 src/config.ts         kontakty, adresa, doména
 photos-src/           fotky pro web, bez metadat (zdroj pro WebP verze)
