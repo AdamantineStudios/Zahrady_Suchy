@@ -2,8 +2,10 @@ import { SITE, absoluteUrl } from "@/config";
 
 /**
  * Strukturovaná data pro vyhledávače (LocalBusiness).
- * Všechny údaje jsou skutečné — telefon a e-mail z webu,
- * IČO a sídlo z veřejného rejstříku.
+ * Všechny údaje jsou skutečné — telefon a e-mail z webu, IČO z veřejného
+ * rejstříku. Firma jezdí za zákazníky (oblast působnosti), proto adresa jen
+ * jako obec: ulici s číslem a PSČ vyhledávače nepotřebují — úplné sídlo
+ * (povinný údaj podnikatele) je v patičce každé stránky.
  */
 export default function JsonLd() {
   const data = {
@@ -19,9 +21,8 @@ export default function JsonLd() {
     image: absoluteUrl("/og.jpg"),
     address: {
       "@type": "PostalAddress",
-      streetAddress: SITE.adresa.ulice,
-      addressLocality: "České Budějovice",
-      postalCode: "370 05",
+      addressLocality: SITE.mesto,
+      addressRegion: SITE.region,
       addressCountry: "CZ",
     },
     areaServed: SITE.region,

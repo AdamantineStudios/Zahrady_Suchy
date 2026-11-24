@@ -1,85 +1,156 @@
-@import "tailwindcss";
+/* Kit taste-skill (system.css, karty, layout.css) ve vrstvě „kit": vlastní pravidla
+   stránky níže jsou mimo vrstvu, takže kit přebijí. Utility Tailwindu se NEnačítají —
+   jejich třídy (např. start-7 = inset-inline-start) by kolidovaly s mřížkou kitu.
+   @tailwindcss/postcss tu jen spojuje @import do jednoho souboru.
+   motion.css a CSS momentů se načítají zvlášť (bez vrstvy), aby kit přebily
+   tak, jak to kit čeká. Soubory v public/assets/ se NEUPRAVUJÍ (viz README tam). */
+@layer kit;
+@import "../public/assets/system.css" layer(kit);
+@import "../public/assets/ui/cards.css" layer(kit);
+@import "../public/assets/layout/layout.css" layer(kit);
 
-@theme {
-  /* Papír a inkoust — kontrasty na cream ověřené (WCAG):
-     ink 13.9:1 (AAA), muted 7.2:1 (AAA), moss-deep 9.0:1 (AAA) */
-  --color-cream: #faf7f0; /* pozadí stránky */
-  --color-paper: #fffefa; /* karty */
-  --color-sunken: #f2ede2; /* zapuštěné pásy sekcí */
-  --color-ink: #1f2a21; /* zelenočerný text (kotví k #1d1d1b z loga) */
-  --color-muted: #49564a; /* sekundární text */
-  --color-line: #e4dfd2; /* linky a rámečky (dekor, ne text) */
-
-  /* Značková olivová z loga — POUZE dekor (2.8:1 na cream, nikdy nenese text) */
-  --color-olive: #8f9d24;
-  --color-olive-soft: #eef0d8; /* tintové pozadí; ink na ní 12.8:1 */
-
-  /* Interaktivní zelené (tmavší olivová řada, drží odstín značky):
-     moss — bílý text 6.3:1 AA, jako text na cream 5.9:1 AA
-     moss-deep — hover a odkazy, bílý text 9.6:1, na cream 9.0:1 */
-  --color-moss: #57661c;
-  --color-moss-deep: #3e4a12;
-
+/* Šimonovy barvy a písma pro kit — vygenerováno skillem:
+   start.mjs brand --page service --bg #faf7f0 --ink #1f2a21 --accent #57661c
+   --surface #f2ede2 --muted #49564a --type lora --radius soft
+   Kontrasty: ink na bg 13.9:1, muted 7.2:1, akce moss s krémovým textem 6.3:1.
+   Olivová z loga (#8f9d24) nese jen logo — jako text má 2.8:1. */
+:root {
+  --p-bg: #faf7f0; --p-surface: #f2ede2; --p-ink: #1f2a21; --p-muted: #49564a;
+  --p-accent: #57661c; --p-accent-ink: #faf7f0; --p-action: #57661c; --p-action-ink: #faf7f0;
+  --p-inv-bg: #1f2a21; --p-inv-surface: #2c362d; --p-inv-ink: #faf7f0; --p-inv-muted: #9fa29a;
+  --p-inv-accent: #faf7f0; --p-inv-accent-ink: #1f2a21; --p-inv-action: #faf7f0; --p-inv-action-ink: #1f2a21;
   --font-display: var(--font-lora), Georgia, serif;
-  --font-sans: var(--font-hanken), system-ui, sans-serif;
-
-  --radius-card: 1.25rem;
-
-  --shadow-soft:
-    0 1px 2px rgb(31 42 33 / 0.05), 0 10px 30px -12px rgb(31 42 33 / 0.15);
-  --shadow-lift:
-    0 2px 6px rgb(31 42 33 / 0.07), 0 20px 45px -15px rgb(31 42 33 / 0.22);
+  --font-text: var(--font-nunito), system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.015em;
+  --display-tracking-xl: -0.02em;
+  --ly-scale: 1.02;
+  --olive: #8f9d24;
 }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: light;
+/* ── Stránkové CSS: jen to, co kit nemá ─────────────────────────────── */
+
+/* Logo: strom v kruhu + nápis ZAHRADY SUCHÝ (vlastní SVG klienta) */
+.nav__logo { gap: 10px; }
+.nav__logo .zs-mark { width: 34px; height: 34px; color: var(--olive); flex: none; }
+.nav__logo .zs-wordmark { height: 30px; width: auto; flex: none; }
+.footer .nav__logo .zs-mark { width: 40px; height: 40px; }
+.footer .nav__logo .zs-wordmark { height: 36px; }
+
+/* picture-develops: jedna fotka v pravém sloupci splitu, vysoká jako text vedle */
+.develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+@media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+
+/* Řádek služby jako odkaz (název) s řádkem popisu pod ním (.rows > li > p z kitu);
+   cíl dotyku aspoň 44 px vysoký */
+.rows a.rows__name { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); }
+.rows a.rows__name:hover { text-decoration-color: currentColor; }
+
+/* Dotykové obrazovky a telefony nemají hover: tlačítka a odkazy tam barvu neprolínají (bez toho
+   se při posunu stránky pod stojícím ukazatelem rozběhne přechod barvy, jako by se odhaloval).
+   Selektor přebíjí motion.css z kitu (html:not([data-motion="off"]) .btn). */
+@media (hover: none), (max-width: 639px) {
+  html:not([data-motion="off"]) body :is(a, button) { transition: none !important; }
+  /* podtržení odkazů v patičce je v kitu jen efekt na hover (v klidu nulová šířka) — bez hoveru zbytečné */
+  html:not([data-motion="off"]) body .footer ul a { background-image: none !important; }
 }
 
-::selection {
-  background: var(--color-olive-soft);
-  color: var(--color-ink);
+/* Na telefonu přesně dvě obrazovky (--hm): tři kroky (úvod, fotky o kus nižší, aby se vešly),
+   trojice fotek (údržba) a kroky realizace — moment je na telefonu statický seznam, jehož výšku
+   jinak určuje jen obsah (moment.css), proto min-height s vyšší vahou */
+@media (max-width: 639px) {
+  #postup, #stromy { --hm: 2; }
+  #postup .panel { --p-h: 240px; }
+  main > #co-umime[data-moment]:not(.is-live) { min-height: calc(2 * 100vh); min-height: calc(2 * 100lvh); }
+  main > #co-umime[data-moment]:not(.is-live) .mo-pc__visual > img { aspect-ratio: 3 / 2; max-height: none; }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-moss);
-  outline-offset: 3px;
+
+
+/* Galerie: fotky v plných řadách (3:2); na počítači si řady rozdělí výšku obrazovky */
+.fotky { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+.fotky--2 { --cols: 2; }
+.fotky--3 { --cols: 3; }
+.fotky > li { min-width: 0; min-height: 0; }
+.fotka { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: var(--surface); border-radius: var(--r-lg); overflow: clip; cursor: zoom-in; aspect-ratio: 3 / 2; }
+/* fotka leží v dlaždici absolutně: do výšky mřížky nic nepřidá, rozměr dává dlaždice */
+.fotka img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.fotka:focus-visible { outline: 2px solid var(--action); outline-offset: 3px; }
+@media (min-width: 1024px) {
+  .fotky.fill-rows { grid-auto-rows: minmax(0, 1fr); }
+  .fotky.fill-rows .fotka { aspect-ratio: auto; }
+}
+/* tablet a telefon: mřížka fotek vezme zbytek obrazovky pod textem (dlaždice bez pevného poměru),
+   takže sekce galerie je celá obrazovka bez prázdného pruhu pod fotkami */
+@media (max-width: 1023px) {
+  .split-fill:has(> .fotky) { display: flex; flex-direction: column; }
+  :is(.split-fill > .fotky, .fotky.fit) { flex: 1 1 0; min-height: 320px; grid-auto-rows: minmax(0, 1fr); }
+  .split-fill > .fotky { margin-top: var(--s-6); }
+  :is(.split-fill > .fotky, .fotky.fit) .fotka { aspect-ratio: auto; }
+}
+@media (max-width: 639px) { .fotky { --cols: 2; gap: 12px; } }
+
+/* .fit: blok jen z fotek, který na počítači vezme zbytek obrazovky pod nadpisem; na tabletu
+   a telefonu má fotka svůj poměr stran a sekce roste (kitová .fill by tam obsah přetekla) */
+@media (min-width: 1024px) { .fit { flex: 1 1 0; min-height: 0; } }
+
+/* Text vedle fotky (nebo mřížky fotek): fotka sahá až k patě sekce, nikdy není nižší než text */
+.split-fill { flex: 1 0 auto; min-height: auto; }
+@media (min-width: 1024px) {
+  .split-fill { grid-template-rows: 1fr; }
+  .split-fill > :is(.frame--fill, .develop, .fotky) { height: 100%; align-self: stretch; }
+  .split-fill > :not(.frame--fill, .develop, .fotky) { align-self: start; }
 }
 
-.font-display {
-  letter-spacing: -0.01em;
+/* Situační návrh: výkres celý, na bílém papíře (žádné ořezání) */
+.frame--plan { background: #fff; }
+.frame--plan > .frame__img { object-fit: contain; padding: var(--s-5); }
+@media (max-width: 1023px) { .frame--plan { aspect-ratio: 794 / 677; height: auto; } }
+
+/* Dvojice fotek (realizace, před a po): stejný poměr, horní hrany v jedné řadě */
+@media (min-width: 1024px) { .dvojice { grid-template-rows: minmax(0, 1fr); } .dvojice > .frame { height: 100%; min-height: 0; } }
+@media (max-width: 1023px) { .dvojice > .frame { aspect-ratio: 4 / 3; } }
+
+/* Trojice fotek (údržba): tři stejné výřezy na výšku, nic pod nimi */
+@media (min-width: 1024px) { .trojice { grid-template-rows: minmax(0, 1fr); } .trojice > .frame { height: 100%; min-height: 0; } }
+@media (max-width: 1023px) { .trojice > .frame { aspect-ratio: 4 / 5; } }
+/* telefon: tři fotky pod sebou vyplní obě obrazovky sekce (--hm: 2), bez prázdného pruhu */
+@media (max-width: 639px) {
+  .trojice.fit { flex: 1 1 0; min-height: 900px; grid-auto-rows: minmax(0, 1fr); }
+  .trojice > .frame { aspect-ratio: auto; height: 100%; min-height: 0; }
 }
 
-/* Jemný papírový šum přes hero a CTA pásy */
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+/* Výrok (word-highlight): malý nadpis sekce a výrok nahoře (jako každé h2) — výrok a nadpis
+   další sekce tak nejsou nikdy celé spolu na jedné obrazovce */
+.statement > .wrap { justify-content: flex-start; gap: var(--s-6); }
+.statement h2.t-label { font-family: var(--font-text); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.01em; color: var(--muted); }
+
+/* Sloupec textu s fotkou pod ním (časté otázky, poptávka): fotka až k patě sekce, na telefonu 4:3 */
+.col-foto { --ratio: 0px; padding: 0; border: 0; }
+@media (min-width: 1024px) { .foto-col > .col-foto { flex: 1 1 0; min-height: 200px; } }
+/* tablet a telefon: sloupec s fotkou se roztáhne a fotka vezme zbytek výšky sekce (FAQ a poptávka
+   jsou na telefonu přesně dvě obrazovky) — žádný prázdný pruh na konci sekce */
+@media (max-width: 1023px) {
+  .split-fill:has(> .foto-col) { display: flex; flex-direction: column; gap: var(--s-7); }
+  .split-fill > .foto-col { flex: 1 1 auto; }
+  .foto-col > .col-foto { flex: 1 1 auto; min-height: 240px; }
 }
 
-/* Odhalovací animace — aktivní jen s JS (bez JS je obsah rovnou vidět) */
-.js .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-.js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .js .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
+/* Poptávka: formulář na druhém podkladu, 48 px odsazení (kit, booking-form) */
+.form-panel { background: var(--surface); border-radius: var(--r-lg); padding: var(--s-8, 48px); }
+@media (max-width: 639px) { .form-panel { padding: var(--s-5); } }
+/* e-mail v textu: na telefonu se smí zalomit */
+a[href^="mailto:"] { overflow-wrap: anywhere; }
+
+.viewer { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; padding: 0; border: 0; background: rgb(20 26 21 / 0.94); color: #faf7f0; }
+.viewer::backdrop { background: rgb(20 26 21 / 0.94); }
+.viewer__stage { height: 100%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 16px; padding: 24px; }
+.viewer__stage img { width: 100%; height: 100%; object-fit: contain; }
+.viewer__bar { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.viewer__btn { min-width: 44px; height: 44px; padding: 0 16px; border-radius: var(--r-btn); border: 1px solid rgb(250 247 240 / 0.35);
+  background: transparent; color: inherit; font: 500 16px/1 var(--font-text); cursor: pointer; }
+.viewer__btn:hover { background: rgb(250 247 240 / 0.12); }
+.viewer__count { min-width: 64px; text-align: center; font: 500 14px/1 var(--font-text); }
+
