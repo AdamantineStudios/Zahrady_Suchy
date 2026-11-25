@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { absoluteUrl, withBase } from "@/config";
+import { SITE, withBase } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import Photo, { sizesFor } from "@/components/Photo";
 import { alt } from "@/data/fotky";
 import { SLUZBY } from "@/data/sluzby";
 
-export const metadata: Metadata = {
-  alternates: { canonical: absoluteUrl("/") },
-};
+export const metadata: Metadata = stranka({ description: SITE.description, path: "/" });
 
 /* Rozdáno skillem (moments.mjs pick --page service --count 2):
    picture-develops (#o-nas) a photo-chapters (#promena). Hero nese původní úvodní fotku
@@ -19,35 +18,35 @@ const PROMENA = [
   {
     foto: "zalozeni-zahonu-kruh",
     title: "Založení zahrady",
-    text: "Ocelová obruba vymezila kruhové posezení a kolem něj se vysázely první trvalky.",
+    text: "Ocelová obruba vymezila kruhové posezení a\u00a0kolem něj se vysázely první trvalky.",
   },
   {
     foto: "kruhove-posezeni-spalky",
     title: "Hotové posezení",
-    text: "Štěrkový kruh s dřevěnými špalky a stojanem na houpací síť, za ním kvetoucí astry.",
+    text: "Štěrkový kruh s\u00a0dřevěnými špalky a\u00a0stojanem na houpací síť, za ním kvetoucí astry.",
   },
   {
     foto: "zahrada-trvalky-podzim",
-    title: "Zahrada v plné barvě",
-    text: "Astry, levandule a okrasné trávy kolem posezení na podzim.",
+    title: "Zahrada v\u00a0plné barvě",
+    text: "Astry, levandule a\u00a0okrasné trávy kolem posezení na podzim.",
   },
 ] as const;
 
 const KROKY = [
   {
     foto: "pozemek-pred-realizaci",
-    title: "Projdeme zahradu s Vámi",
-    text: "Na schůzce u Vás probereme, jak chcete zahradu používat, a možnosti, jak to uskutečnit.",
+    title: "Projdeme zahradu s\u00a0Vámi",
+    text: "Na schůzce u\u00a0Vás probereme, jak chcete zahradu používat, a\u00a0možnosti, jak to uskutečnit.",
   },
   {
     foto: "navrh-zahrady-plan",
     title: "Připravíme návrh zahrady",
-    text: "Projekt Vám ukáže, jak bude zahrada vypadat. Změny a úpravy doladíme společně.",
+    text: "Projekt Vám ukáže, jak bude zahrada vypadat. Změny a\u00a0úpravy doladíme společně.",
   },
   {
     foto: "sucha-zidka-stavba",
     title: "Zahradu založíme",
-    text: "Terénní úpravy, výsadby, trávník i práce s kamenem a dřevem — vše podle návrhu.",
+    text: "Terénní úpravy, výsadby, trávník i\u00a0práce s\u00a0kamenem a\u00a0dřevem — vše podle návrhu.",
   },
 ] as const;
 
@@ -58,9 +57,9 @@ export default function Home() {
   return (
     <Site current="uvod" close={{ foto: "chodnik-zahony-trvalek", alt: alt("chodnik-zahony-trvalek"), pos: "50% 60%" }}>
       <HeroSplit
-        kicker="Návrhy, realizace a údržba zahrad"
+        kicker="Návrhy, realizace a&nbsp;údržba zahrad"
         title="Zahrada. Místo nekonečných možností."
-        lead="Stačí je objevit. Navrhujeme, zakládáme a udržujeme zahrady v Českých Budějovicích a po celém Jihočeském kraji."
+        lead="Stačí je objevit. Navrhujeme, zakládáme a&nbsp;udržujeme zahrady v&nbsp;Českých Budějovicích a&nbsp;po celém Jihočeském kraji."
         primary={AKCE}
         secondary={ZAVOLAT}
         foto="zahrada-trvalky-podzim"
@@ -71,7 +70,7 @@ export default function Home() {
         <div className="wrap mo-ph">
           <div className="mo-ph__head">
             <h2 id="promena-h">Proměna jedné zahrady</h2>
-            <p>Zahrada z úvodní fotky: od založení po plnou barvu.</p>
+            <p>Zahrada z&nbsp;úvodní fotky: od založení po plnou barvu.</p>
           </div>
           <ol className="mo-ph__list">
             {PROMENA.map((ch) => (
@@ -93,25 +92,24 @@ export default function Home() {
             <div className="span-6">
               <div className="section-head">
                 <h2 id="onas-h">Zahrada jako další část Vašeho bydlení</h2>
-                <p>Dovolte nám být u toho s Vámi.</p>
+                <p>Dovolte nám být u&nbsp;toho s&nbsp;Vámi.</p>
               </div>
               <div className="stack-4 onas">
                 <p>
-                  Jsme firma z Českých Budějovic, odraz naší práce však můžete vidět po celém
-                  Jihočeském kraji. Věnujeme se návrhům, realizacím a údržbám zahrad.
+                  Jsme firma z&nbsp;Českých Budějovic, odraz naší práce však můžete vidět po celém
+                  Jihočeském kraji. Věnujeme se návrhům, realizacím a&nbsp;údržbám zahrad.
                 </p>
                 <p>
-                  Při realizacích zahrad se zabýváme terénními úpravami, výsadbou dřevin a
-                  trvalkových záhonů, výsevem travních ploch, či pokládkou travních koberců. Máme
-                  zkušenosti také s prací se dřevem, kamenem, kovem a vodou.
+                  Při realizacích zahrad se zabýváme terénními úpravami, výsadbou dřevin a&nbsp;trvalkových záhonů, výsevem travních ploch či pokládkou travních koberců. Máme
+                  zkušenosti také s&nbsp;prací se dřevem, kamenem, kovem a&nbsp;vodou.
                 </p>
                 <p>
-                  Naším cílem je vytvořit z Vaší zahrady další část Vašeho bydlení, kde budete trávit
-                  Váš volný čas s rodinou a odpočívat po dlouhém pracovním dni.
+                  Naším cílem je vytvořit z&nbsp;Vaší zahrady další část Vašeho bydlení, kde budete trávit
+                  svůj volný čas s&nbsp;rodinou a&nbsp;odpočívat po dlouhém pracovním dni.
                 </p>
                 <p>
-                  Uvědomujeme si, že každý klient je jedinečný, a proto každé realizaci předchází
-                  schůzka, na které prodiskutujeme Vaše představy a možnosti, jak je uskutečnit.
+                  Uvědomujeme si, že každý klient je jedinečný, a&nbsp;proto každé realizaci předchází
+                  schůzka, na které prodiskutujeme Vaše představy a&nbsp;možnosti, jak je uskutečnit.
                 </p>
               </div>
             </div>
@@ -129,8 +127,8 @@ export default function Home() {
       <section className="section" id="postup" aria-labelledby="postup-h">
         <div className="wrap">
           <div className="section-head">
-            <h2 id="postup-h">Tři kroky k Vaší zahradě</h2>
-            <p>O hotovou zahradu se pak postaráme i dál — pravidelnou údržbou zeleně.</p>
+            <h2 id="postup-h">Tři kroky k&nbsp;Vaší zahradě</h2>
+            <p>O&nbsp;hotovou zahradu se pak postaráme i&nbsp;dál — pravidelnou údržbou zeleně.</p>
           </div>
           <div className="grid">
             {KROKY.map((k, i) => (
@@ -157,8 +155,8 @@ export default function Home() {
           <div className="grid fill split-fill">
             <div className="span-5">
               <div className="section-head">
-                <h2 id="sluzby-h">Návrh, realizace a údržba zahrad</h2>
-                <p>Zahradu s Vámi projdeme celou cestou, od první čáry v návrhu po pravidelnou péči.</p>
+                <h2 id="sluzby-h">Návrh, realizace a&nbsp;údržba zahrad</h2>
+                <p>Zahradu s&nbsp;Vámi projdeme celou cestou, od první čáry v&nbsp;návrhu po pravidelnou péči.</p>
               </div>
               <ul className="rows">
                 {SLUZBY.map((s) => (
@@ -172,7 +170,7 @@ export default function Home() {
               </ul>
               <p>
                 <a className="link" href={withBase("/galerie/")}>
-                  Prohlédnout zahrady v galerii
+                  Prohlédnout zahrady v&nbsp;galerii
                 </a>
               </p>
             </div>

@@ -14,20 +14,20 @@ export const SLUZBY: Sluzba[] = [
     nazev: "Návrh zahrady",
     radek: "Projekt, díky kterému si lépe představíte, jak bude Vaše zahrada vypadat.",
     kratky:
-      "Každé realizaci předchází projekt, díky kterému si lépe dokážete představit, jak bude Vaše zahrada vypadat. V tomto kroku je možné diskutovat o různých změnách a úpravách, aby výsledek naplňoval co nejvěrněji Vaše představy.",
+      "Každé realizaci předchází projekt, díky kterému si lépe dokážete představit, jak bude Vaše zahrada vypadat. V\u00a0tomto kroku je možné diskutovat o\u00a0různých změnách a\u00a0úpravách, aby výsledek naplňoval co nejvěrněji Vaše představy.",
   },
   {
     slug: "realizace-zahrad",
     nazev: "Realizace zahrad",
-    radek: "Terénní úpravy, výsadby, trávníky i práce se dřevem, kamenem, kovem a vodou.",
+    radek: "Terénní úpravy, výsadby, trávníky i\u00a0práce se dřevem, kamenem, kovem a\u00a0vodou.",
     kratky:
-      "Po vyhotovení projektu následuje samotná realizace. S naším týmem se vždy snažíme odvést tu nejlepší práci, abyste se ve Vaší zahradě cítili opravdu příjemně.",
+      "Po vyhotovení projektu následuje samotná realizace. S\u00a0naším týmem se vždy snažíme odvést tu nejlepší práci, abyste se ve Vaší zahradě cítili opravdu příjemně.",
   },
   {
     slug: "udrzba-zelene",
     nazev: "Údržba zeleně",
-    radek: "Pravidelná péče, aby zahrada zůstala svěží a plná rozkvetlých rostlin.",
+    radek: "Pravidelná péče, aby zahrada zůstala svěží a\u00a0plná rozkvetlých rostlin.",
     kratky:
-      "Založením trávníku a vysázením rostlin péče o zahradu nekončí. Jsme připraveni Vám pomoci dlouhodobě s Vaší zahradou. Pravidelná údržba zeleně prodlužuje životnost Vaší zahrady, aby byla stále svěží a plná rozkvetlých rostlin.",
+      "Založením trávníku a\u00a0vysázením rostlin péče o\u00a0zahradu nekončí. Jsme připraveni Vám pomoci dlouhodobě s\u00a0Vaší zahradou. Pravidelná údržba zeleně prodlužuje životnost Vaší zahrady, aby byla stále svěží a\u00a0plná rozkvetlých rostlin.",
   },
 ];
