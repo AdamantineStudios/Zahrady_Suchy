@@ -66,6 +66,32 @@
   main > #co-umime[data-moment]:not(.is-live) .mo-pc__visual > img { aspect-ratio: 3 / 2; max-height: none; }
 }
 
+/* Nízké obrazovky (notebook 1366×768, Full HD se zvětšením 125 %, telefon na šířku): kit drží sekci
+   na počítači přesně na N obrazovek a úvod (hero) od 640 px přesně na jednu, takže obsah, který se
+   nevejde, ležel přes další sekci. Stejné pravidlo, jaké kit sám používá na tabletu a telefonu:
+   sekce má aspoň své obrazovky a roste, když obsah potřebuje víc. Kde se obsah vejde (1440×900),
+   je výška stejná jako dřív. Živé momenty (.is-live) si výšku řídí samy. */
+@media (min-width: 1280px) {
+  main > :is(section, .section):not(.hero, .section--hero, .is-live), footer.closing {
+    height: auto; min-height: calc(var(--h, 1) * 100vh); min-height: calc(var(--h, 1) * 100svh);
+  }
+  :where(main > :is(section, .section):not(.hero, .section--hero, .is-live), footer.closing) { display: flex; flex-direction: column; }
+  main > :is(section, .section):not(.hero, .section--hero, .is-live) > :is(.wrap, .container),
+  footer.closing > .wrap { flex: 1 0 auto; height: auto; min-height: 0; }
+}
+@media (min-width: 640px) {
+  main > :is(.hero, .section--hero) { height: auto; min-height: 100vh; min-height: 100svh; }
+  :where(main > :is(.hero, .section--hero)) { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr; }
+  main > :is(.hero, .section--hero) > :is(.wrap, .container) { height: auto; }
+}
+
+/* iOS 15–16 neznají @media (scripting), kterým kit schovává lištu akcí na telefonu do chvíle, než ji
+   system.js ukáže — bez toho lišta při načtení problikla přes úvod. Třídu mo-js dává skript v <head>
+   (bez JavaScriptu zůstává lišta vidět, jak kit chce). V novějších prohlížečích totéž co kit. */
+@media (max-width: 639px) {
+  html.mo-js .actionbar:not([data-bar="shown"], [data-bar="always"]) { transform: translateY(100%); visibility: hidden; }
+  html.mo-js:not(:has(> body > nav.actionbar[data-bar="always"])) main > :is(.hero, .section--hero) { --bar: 0px; }
+}
 
 
 /* Galerie: fotky v plných řadách (3:2); na počítači si řady rozdělí výšku obrazovky */
