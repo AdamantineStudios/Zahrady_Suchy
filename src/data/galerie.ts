@@ -20,7 +20,7 @@ export const KATEGORIE: GalerieKategorie[] = [
     uvod: "Zahrady, které už žijí svým životem — od posezení po dětské koutky.",
     fotky: [
       "kruhove-posezeni-spalky",
-      "chodnik-zahony-trvalek",
+      "zahrada-trvalky-podzim",
       "posezeni-pod-brizou",
       "dvorek-lavicky",
       "detske-hriste-houpacky",

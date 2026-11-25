@@ -124,6 +124,15 @@
 /* Výrok (word-highlight): malý nadpis sekce a výrok nahoře (jako každé h2) — výrok a nadpis
    další sekce tak nejsou nikdy celé spolu na jedné obrazovce */
 .statement > .wrap { justify-content: flex-start; gap: var(--s-6); }
+/* pod výrokem široká fotka až k patě sekce (na tabletu a telefonu 16:9) — obrazovka není prázdná */
+.statement-foto { --ratio: 0px; padding: 0; border: 0; }
+.statement-foto > .frame__img { object-position: var(--ly-pos, 50% 50%); }
+@media (min-width: 1024px) { .statement-foto { min-height: 240px; } }
+@media (max-width: 1023px) { .statement-foto { aspect-ratio: 16 / 9; } }
+
+/* Kontakt: Šimonova slova jako výrok (word-highlight) v textu vedle fotky jeho práce */
+.kdo-jsem { display: flex; flex-direction: column; gap: var(--s-5); }
+.kdo-jsem .mo-wh__text { font-size: var(--t-h3); line-height: 1.25; }
 .statement h2.t-label { font-family: var(--font-text); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.01em; color: var(--muted); }
 
 /* Sloupec textu s fotkou pod ním (časté otázky, poptávka): fotka až k patě sekce, na telefonu 4:3 */

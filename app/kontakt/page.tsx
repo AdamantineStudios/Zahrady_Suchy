@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/kontakt/") },
 };
 
-/* Rozdáno skillem: moment word-highlight (#vasen, Šimonova slova doslova).
+/* Rozdáno skillem: moment word-highlight (#kdo-jsem, Šimonova slova doslova, vedle fotky jeho práce).
    Formulář podle kitu (form.form): kontroluje ho system.js a bez data-endpoint
    ho prohlížeč odešle sám — otevře poštovní aplikaci (mailto) s vyplněnými
    poli. Žádné „Děkujeme" bez skutečného odeslání. */
@@ -116,20 +116,22 @@ export default function Kontakt() {
         </div>
       </section>
 
-      <section className="section" id="kdo-jsem" aria-labelledby="kdo-jsem-h">
+      <section className="section" id="kdo-jsem" data-moment="word-highlight" aria-labelledby="kdo-jsem-h">
         <div className="wrap">
           <div className="grid fill split-fill">
-            <div className="span-5">
-              <div className="section-head">
-                <h2 id="kdo-jsem-h">Kdo se o Vaši zahradu postará</h2>
-                <p>Ing. Šimon Suchý</p>
-              </div>
+            <div className="span-5 kdo-jsem">
+              <h2 id="kdo-jsem-h">Kdo se o Vaši zahradu postará</h2>
+              <p className="mo-wh__text">
+                Tvorba zahrad je nejen prací, ale i <strong>vášní a zálibou</strong>. Rád se postavím novým
+                výzvám, které skýtají neotřelé požadavky klientů.
+              </p>
               <p>
                 Svá studia jsem prožil na Moravě. Na Zahradnické fakultě Mendelovy univerzity v Brně jsem
                 získal inženýrský titul v oboru zahradní a krajinné realizace v programu Zahradní a krajinné
                 architektury. Moje srdce však patří do jižních Čech. Miluju naši krajinu a přírodu, ze které
                 čerpám inspiraci při tvorbě zahrad.
               </p>
+              <p className="muted">Ing. Šimon Suchý</p>
             </div>
             <div className="frame frame--photo frame--fill span-6 start-7">
               <Photo
@@ -140,18 +142,6 @@ export default function Kontakt() {
               />
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section statement" id="vasen" data-moment="word-highlight" aria-labelledby="vasen-h">
-        <div className="wrap">
-          <h2 className="t-label" id="vasen-h">
-            Tvorba zahrad podle Šimona
-          </h2>
-          <p className="mo-wh__text">
-            Tvorba zahrad je nejen prací, ale i <strong>vášní a zálibou</strong>. Rád se postavím novým
-            výzvám, které skýtají neotřelé požadavky klientů.
-          </p>
         </div>
       </section>
     </Site>

@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 };
 
 /* Rozdáno skillem (moments.mjs pick --page service --count 2):
-   picture-develops (#o-nas) a photo-chapters (#promena). */
+   picture-develops (#o-nas) a photo-chapters (#promena). Hero nese původní úvodní fotku
+   a Šimonův slogan; kapitoly #promena vyprávějí, jak vznikla právě tahle zahrada
+   (poslední kapitola je záměrně tatáž fotka jako hero). */
 
 const PROMENA = [
   {
@@ -56,20 +58,20 @@ export default function Home() {
   return (
     <Site current="uvod" close={{ foto: "chodnik-zahony-trvalek", alt: alt("chodnik-zahony-trvalek"), pos: "50% 60%" }}>
       <HeroSplit
-        kicker="Ing. Šimon Suchý · České Budějovice"
-        title="Návrhy a realizace zahrad"
-        lead="Navrhujeme, zakládáme a udržujeme zahrady v Českých Budějovicích a po celém Jihočeském kraji. Každé realizaci předchází schůzka u Vás na zahradě."
+        kicker="Návrhy, realizace a údržba zahrad"
+        title="Zahrada. Místo nekonečných možností."
+        lead="Stačí je objevit. Navrhujeme, zakládáme a udržujeme zahrady v Českých Budějovicích a po celém Jihočeském kraji."
         primary={AKCE}
         secondary={ZAVOLAT}
-        foto="predzahradka-slapaky"
-        pos="45% 60%"
+        foto="zahrada-trvalky-podzim"
+        pos="45% 55%"
       />
 
       <section className="section" id="promena" data-moment="photo-chapters" aria-labelledby="promena-h">
         <div className="wrap mo-ph">
           <div className="mo-ph__head">
             <h2 id="promena-h">Proměna jedné zahrady</h2>
-            <p>Kruhové posezení od založení po vzrostlou zahradu.</p>
+            <p>Zahrada z úvodní fotky: od založení po plnou barvu.</p>
           </div>
           <ol className="mo-ph__list">
             {PROMENA.map((ch) => (
@@ -90,8 +92,8 @@ export default function Home() {
           <div className="grid fill split-fill">
             <div className="span-6">
               <div className="section-head">
-                <h2 id="onas-h">Zahrada. Místo nekonečných možností.</h2>
-                <p>Stačí je objevit. Dovolte nám být u toho s Vámi.</p>
+                <h2 id="onas-h">Zahrada jako další část Vašeho bydlení</h2>
+                <p>Dovolte nám být u toho s Vámi.</p>
               </div>
               <div className="stack-4 onas">
                 <p>

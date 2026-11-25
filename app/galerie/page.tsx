@@ -29,7 +29,7 @@ export default function GaleriePage() {
         lead="Všechny fotky jsou z našich zahrad v Jihočeském kraji — žádná ilustrační, žádná z fotobanky."
         primary={AKCE}
         secondary={ZAVOLAT}
-        foto="zahrada-trvalky-podzim"
+        foto="chodnik-zahony-trvalek"
         pos="50% 55%"
       />
 

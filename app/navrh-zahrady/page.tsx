@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { absoluteUrl } from "@/config";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
@@ -79,6 +80,15 @@ export default function NavrhZahrady() {
             V tomto kroku je možné diskutovat o různých změnách a úpravách, aby výsledek naplňoval co
             nejvěrněji <strong>Vaše představy</strong>.
           </p>
+          <div className="frame frame--photo fit statement-foto">
+            <Photo
+              name="nova-zahrada-terasa"
+              alt={alt("nova-zahrada-terasa")}
+              className="frame__img"
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              style={{ "--ly-pos": "50% 62%" } as CSSProperties}
+            />
+          </div>
         </div>
       </section>
 
