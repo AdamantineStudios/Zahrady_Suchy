@@ -1,12 +1,11 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { absoluteUrl } from "@/config";
-import Container from "@/components/Container";
+import Site, { AKCE, ZAVOLAT } from "@/components/Site";
+import HeroSplit from "@/components/HeroSplit";
 import Photo from "@/components/Photo";
-import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
-import ProcessSteps from "@/components/ProcessSteps";
-import FaqList from "@/components/FaqList";
+import Faq from "@/components/Faq";
+import { alt } from "@/data/fotky";
 import { FAQ_NAVRH } from "@/data/faq";
 
 export const metadata: Metadata = {
@@ -16,110 +15,84 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/navrh-zahrady/") },
 };
 
+/* Rozdáno skillem: moment word-highlight (#slovo). Šimonův odstavec o návrhu
+   je rozdělený: první věta v #projekt, druhá jako výrok v #slovo (doslova). */
+
+const RESIME = [
+  "Rozvržení ploch, cest a posezení",
+  "Terasy, vodní prvky a zahradní stavby",
+  "Osazovací plán dřevin a trvalek",
+  "Trávník — výsev, nebo travní koberec",
+  "Materiály: dřevo, kámen, kov a voda",
+  "Úpravy návrhu podle Vašich připomínek",
+];
+
 export default function NavrhZahrady() {
   return (
-    <>
-      <section>
-        <Container className="py-14 sm:py-16">
-          <SectionHeading
-            as="h1"
-            eyebrow="Projekce"
-            title="Návrh zahrady"
-            lead="Každé realizaci předchází projekt, díky kterému si lépe dokážete představit, jak bude Vaše zahrada vypadat. V tomto kroku je možné diskutovat o různých změnách a úpravách, aby výsledek naplňoval co nejvěrněji Vaše představy."
-          />
-        </Container>
+    <Site current="navrh" close={{ foto: "sterkovy-zahon-balvany", alt: alt("sterkovy-zahon-balvany") }}>
+      <HeroSplit
+        kicker="Ing. Šimon Suchý · České Budějovice"
+        title="Návrh Vaší budoucí zahrady"
+        lead="Navrhujeme zahrady v Českých Budějovicích a po celém Jihočeském kraji. Návrh vzniká až po schůzce u Vás na zahradě."
+        primary={AKCE}
+        secondary={ZAVOLAT}
+        foto="zahon-u-terasy-gabiony"
+        pos="50% 55%"
+      />
+
+      <section className="section" id="projekt" aria-labelledby="projekt-h">
+        <div className="wrap">
+          <div className="grid fill split-fill">
+            <div className="span-5">
+              <div className="section-head">
+                <h2 id="projekt-h">Co v návrhu zahrady řešíme</h2>
+                <p>
+                  Každé realizaci předchází projekt, díky kterému si lépe dokážete představit, jak bude
+                  Vaše zahrada vypadat.
+                </p>
+              </div>
+              <ul className="rows">
+                {RESIME.map((r) => (
+                  <li key={r}>
+                    <span className="rows__name">{r}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="frame frame--photo frame--fill frame--plan span-6 start-7">
+              <Photo
+                name="navrh-zahrady-plan"
+                alt={alt("navrh-zahrady-plan")}
+                className="frame__img"
+                sizes="(min-width: 1024px) 640px, 100vw"
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Ukázka návrhu + realizovaný detail */}
-      <section className="border-y border-line bg-sunken/50">
-        <Container className="py-16 sm:py-20">
-          <div className="grid items-start gap-10 lg:grid-cols-2">
-            <Reveal>
-              <figure className="rounded-card border border-line bg-paper p-5 shadow-soft">
-                <Photo
-                  name="navrh-zahrady-plan"
-                  alt="Situační návrh zahrady u rodinného domu s terasou, vodní plochou a trávníkem"
-                  sizes="(min-width: 1024px) 34rem, 100vw"
-                  className="mx-auto w-full max-w-[640px] rounded-lg"
-                />
-                <figcaption className="mt-4 text-sm text-muted">
-                  Ukázka situačního návrhu zahrady u rodinného domu — sauna,
-                  vodní plocha, dřevěná terasa i cesta z pražců.
-                </figcaption>
-              </figure>
-            </Reveal>
-            <Reveal delay={120}>
-              <figure>
-                <Photo
-                  name="prazcove-schody-detail"
-                  alt="Detail schodů z dubových pražců s kamennou výplní"
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="aspect-[4/3] w-full rounded-card object-cover shadow-lift"
-                />
-                <figcaption className="mt-4 text-sm text-muted">
-                  …a takhle vypadá cesta z pražců v jedné z našich realizací.
-                </figcaption>
-              </figure>
-            </Reveal>
-          </div>
-
-          <div className="mt-14 max-w-2xl">
-            <h2 className="font-display text-2xl font-medium text-ink">
-              Co v návrhu řešíme
-            </h2>
-            <ul className="mt-5 grid gap-3 text-muted sm:grid-cols-2">
-              {[
-                "rozvržení ploch, cest a posezení",
-                "terasy, vodní prvky a zahradní stavby",
-                "osazovací plán dřevin a trvalek",
-                "trávník — výsev, nebo travní koberec",
-                "materiály: dřevo, kámen, kov, voda",
-                "úpravy návrhu podle Vašich připomínek",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-olive"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </section>
-
-      <section>
-        <Container className="py-16 sm:py-20">
-          <SectionHeading
-            eyebrow="Kde v procesu jsme"
-            title="Návrh je začátek cesty"
-          />
-          <div className="mt-10">
-            <ProcessSteps highlight={[1, 2]} />
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-t border-line bg-sunken/50">
-        <Container className="py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <SectionHeading
-              eyebrow="Časté otázky"
-              title="Na co se ptáte nejčastěji"
+      <section className="section statement" id="slovo" data-moment="word-highlight" aria-labelledby="slovo-h">
+        <div className="wrap">
+          <h2 className="t-label" id="slovo-h">
+            Návrh zahrady s Vámi
+          </h2>
+          <p className="mo-wh__text">
+            V tomto kroku je možné diskutovat o různých změnách a úpravách, aby výsledek naplňoval co
+            nejvěrněji <strong>Vaše představy</strong>.
+          </p>
+          <div className="frame frame--photo fit statement-foto">
+            <Photo
+              name="nova-zahrada-terasa"
+              alt={alt("nova-zahrada-terasa")}
+              className="frame__img"
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              style={{ "--ly-pos": "50% 62%" } as CSSProperties}
             />
-            <FaqList items={FAQ_NAVRH} />
           </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/kontakt/?sluzba=navrh#poptavka"
-              className="inline-block rounded-full bg-moss px-8 py-4 font-semibold text-white shadow-lift transition-colors hover:bg-moss-deep"
-            >
-              Poptat návrh zahrady
-            </Link>
-          </div>
-        </Container>
+        </div>
       </section>
-    </>
+
+      <Faq title="Otázky k návrhu zahrady" items={FAQ_NAVRH} foto="dvorek-lavicky" />
+    </Site>
   );
 }

@@ -11,3 +11,10 @@ public/photos/
 
 # systémové soubory
 .DS_Store
+
+# příchozí fotky před importem (mohou obsahovat GPS — nikdy do gitu)
+photos-inbox/
+
+# artefakty kontrol taste-skill (screenshoty, profily Chrome)
+.taste-skill/
+shots/

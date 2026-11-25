@@ -25,12 +25,27 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
-      - run: npm run build
-      - uses: actions/configure-pages@v5
+      - id: pages
+        uses: actions/configure-pages@v5
         with:
           # Pokusí se Pages zapnout automaticky; když to org nedovolí,
           # zapněte ručně: Settings → Pages → Source: GitHub Actions
           enablement: true
+      # Cesta a doména se berou z nastavení Pages: bez vlastní domény
+      # „/Zahrady_Suchy" na adamantinestudios.github.io, s vlastní doménou
+      # (Settings → Pages → Custom domain) „" na zahradysuchy.cz.
+      # Přechod na doménu tak nepotřebuje žádnou změnu kódu.
+      - name: Kontrola cesty a domény
+        run: |
+          echo "origin=${{ steps.pages.outputs.origin }} base_path='${{ steps.pages.outputs.base_path }}'"
+          if [[ "${{ steps.pages.outputs.origin }}" == *github.io && -z "${{ steps.pages.outputs.base_path }}" ]]; then
+            echo "::error::Na github.io musí web běžet pod /Zahrady_Suchy — prázdná cesta by rozbila odkazy."
+            exit 1
+          fi
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_ORIGIN: ${{ steps.pages.outputs.origin }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

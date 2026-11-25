@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { absoluteUrl } from "@/config";
-import Container from "@/components/Container";
-import Photo from "@/components/Photo";
-import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
-import ProcessSteps from "@/components/ProcessSteps";
-import FaqList from "@/components/FaqList";
-import BeforeAfter from "@/components/BeforeAfter";
+import Site, { AKCE, ZAVOLAT } from "@/components/Site";
+import HeroSplit from "@/components/HeroSplit";
+import Photo, { sizesFor, type PhotoName } from "@/components/Photo";
+import Faq from "@/components/Faq";
+import { alt } from "@/data/fotky";
 import { FAQ_REALIZACE } from "@/data/faq";
-import { PROMENY } from "@/data/galerie";
 
 export const metadata: Metadata = {
   title: "Realizace zahrad",
@@ -18,155 +14,91 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/realizace-zahrad/") },
 };
 
-const UMIME = [
+/* Rozdáno skillem: moment pinned-chapters (#co-umime) — sekce drží na
+   obrazovce, zatímco se posouvají čtyři kroky; fotka vpravo se mění s nimi. */
+
+const UMIME: { foto: PhotoName; title: string; text: string }[] = [
   {
-    nazev: "Terénní úpravy",
+    foto: "sterkova-plocha-svah",
+    title: "Terénní úpravy zahrady",
     text: "Modelace terénu, svahy, zpevněné plochy a přípravné práce.",
   },
   {
-    nazev: "Výsadby dřevin a trvalek",
+    foto: "cerstva-vysadba-mulc",
+    title: "Dřeviny a trvalky do zahrady",
     text: "Trvalkové záhony a dřeviny, které mění zahradu s ročními obdobími.",
   },
   {
-    nazev: "Trávníky",
+    foto: "detske-hriste-houpacky",
+    title: "Zahradní trávníky",
     text: "Výsev travních ploch i pokládka travních koberců.",
   },
   {
-    nazev: "Dřevo, kámen, kov a voda",
-    text: "Suché zídky, pražcové schody, štěrkové záhony, vodní prvky.",
+    foto: "schody-prazce-balvany",
+    title: "Dřevo, kámen, kov a voda v zahradě",
+    text: "Suché zídky, schody z pražců, štěrkové záhony i vodní prvky.",
   },
 ];
 
 export default function RealizaceZahrad() {
-  const promena = PROMENY[1];
   return (
-    <>
-      <section>
-        <Container className="py-14 sm:py-16">
-          <SectionHeading
-            as="h1"
-            eyebrow="Realizace"
-            title="Realizace zahrad"
-            lead="Po vyhotovení projektu následuje samotná realizace. S naším týmem se vždy snažíme odvést tu nejlepší práci, abyste se ve Vaší zahradě cítili opravdu příjemně."
-          />
-        </Container>
+    <Site
+      current="realizace"
+      close={{ foto: "sucha-zidka-stavba", alt: alt("sucha-zidka-stavba"), pos: "50% 62%" }}
+    >
+      <HeroSplit
+        kicker="Ing. Šimon Suchý · České Budějovice"
+        title="Realizace Vaší zahrady"
+        lead="Po vyhotovení projektu následuje samotná realizace. S naším týmem se vždy snažíme odvést tu nejlepší práci, abyste se ve Vaší zahradě cítili opravdu příjemně."
+        primary={AKCE}
+        secondary={ZAVOLAT}
+        foto="nova-zahrada-terasa"
+        pos="50% 60%"
+      />
+
+      <section
+        className="section"
+        id="co-umime"
+        data-moment="pinned-chapters"
+        style={{ "--h": 2 } as React.CSSProperties}
+        aria-labelledby="co-umime-h"
+      >
+        <div className="wrap mo-pc__grid">
+          <div className="mo-pc__text">
+            <h2 id="co-umime-h">Co při realizaci zahrady děláme</h2>
+            <ol className="mo-pc__steps">
+              {UMIME.map((u) => (
+                <li className="mo-pc__step" key={u.foto}>
+                  <h3>{u.title}</h3>
+                  <p>{u.text}</p>
+                  <figure className="mo-pc__visual">
+                    <Photo name={u.foto} alt={alt(u.foto)} sizes={sizesFor(u.foto, 628, 600)} />
+                  </figure>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="mo-pc__visuals frame"></div>
+        </div>
       </section>
 
-      <section className="border-y border-line bg-sunken/50">
-        <Container className="py-16 sm:py-20">
-          <SectionHeading
-            eyebrow="Co všechno umíme"
-            title="Od hrubého terénu po poslední rostlinu"
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {UMIME.map((u, i) => (
-              <Reveal key={u.nazev} delay={i * 80}>
-                <div className="h-full rounded-card border border-line bg-paper p-6 shadow-soft">
-                  <h3 className="font-semibold text-ink">{u.nazev}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {u.text}
-                  </p>
-                </div>
-              </Reveal>
+      <section className="section" id="promena" aria-labelledby="promena-h">
+        <div className="wrap">
+          <div className="section-head">
+            <h2 id="promena-h">Proměna zahrady ve svahu</h2>
+            <p>Vlevo svah při terénních úpravách, vpravo hotová zpevněná plocha na stejném místě.</p>
+          </div>
+          <div className="grid fit dvojice">
+            {(["terenni-upravy-svah", "sterkova-plocha-hotovo"] as const).map((f) => (
+              <div className="frame frame--photo span-6" key={f}>
+                <Photo name={f} alt={alt(f)} className="frame__img" sizes={sizesFor(f, 628, 558)} />
+              </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Proměna před/po */}
-      <section>
-        <Container className="py-16 sm:py-20">
-          <SectionHeading
-            eyebrow="Proměna"
-            title="Stejné místo, jiná zahrada"
-            lead="Kruhové posezení od založení záhonů po vzrostlou zahradu — táhněte posuvníkem."
-          />
-          <div className="mx-auto mt-10 max-w-4xl">
-            <BeforeAfter
-              pred={promena.pred}
-              po={promena.po}
-              altPred={promena.altPred}
-              altPo={promena.altPo}
-              popisek={promena.popisek}
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* Ukázky prací */}
-      <section className="border-y border-line bg-sunken/50">
-        <Container className="py-16 sm:py-20">
-          <SectionHeading eyebrow="Z našich realizací" title="Kousek po kousku" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {(
-              [
-                {
-                  name: "nova-zahrada-terasa",
-                  alt: "Čerstvě založená zahrada s namulčovanými záhony a mlatovou cestou",
-                },
-                {
-                  name: "predzahradka-gabiony-vysadba",
-                  alt: "Nově osázená předzahrádka s tvarovaným stromkem u gabionového plotu",
-                },
-                {
-                  name: "dvorek-lavicky",
-                  alt: "Proměněný vnitroblok s lavičkami a novými výsadbami",
-                },
-                {
-                  name: "sucha-zidka-stavba",
-                  alt: "Ručně skládaná suchá zídka z lomového kamene",
-                },
-              ] as const
-            ).map((f, i) => (
-              <Reveal key={f.name} delay={i * 70}>
-                <Photo
-                  name={f.name}
-                  alt={f.alt}
-                  sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 100vw"
-                  className="aspect-[4/3] w-full rounded-card object-cover shadow-soft"
-                />
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/galerie/"
-              className="font-semibold text-moss-deep underline-offset-4 hover:underline"
-            >
-              Více fotek v galerii →
-            </Link>
-          </div>
-        </Container>
-      </section>
-
-      <section>
-        <Container className="py-16 sm:py-20">
-          <SectionHeading eyebrow="Jak to probíhá" title="Čtyři kroky k hotové zahradě" />
-          <div className="mt-10">
-            <ProcessSteps highlight={[3]} />
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-t border-line bg-sunken/50">
-        <Container className="py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <SectionHeading
-              eyebrow="Časté otázky"
-              title="Na co se ptáte nejčastěji"
-            />
-            <FaqList items={FAQ_REALIZACE} />
-          </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/kontakt/?sluzba=realizace#poptavka"
-              className="inline-block rounded-full bg-moss px-8 py-4 font-semibold text-white shadow-lift transition-colors hover:bg-moss-deep"
-            >
-              Poptat realizaci zahrady
-            </Link>
-          </div>
-        </Container>
-      </section>
-    </>
+      <Faq title="Otázky k realizaci zahrady" items={FAQ_REALIZACE} foto="predzahradka-gabiony-vysadba" />
+    </Site>
   );
 }

@@ -1,98 +1,59 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { absoluteUrl } from "@/config";
-import Container from "@/components/Container";
-import SectionHeading from "@/components/SectionHeading";
-import GalerieClient from "@/components/GalerieClient";
-import BeforeAfter from "@/components/BeforeAfter";
-import { KATEGORIE, PROMENY } from "@/data/galerie";
+import Site, { AKCE, ZAVOLAT } from "@/components/Site";
+import HeroSplit from "@/components/HeroSplit";
+import Photo from "@/components/Photo";
+import Galerie from "@/components/Galerie";
+import { alt } from "@/data/fotky";
+import { SVAH } from "@/data/galerie";
 
 export const metadata: Metadata = {
   title: "Galerie",
   description:
-    "Fotogalerie zahrad, které jsme navrhli, založili nebo o ně pečujeme — hotové zahrady, záhony a výsadby, práce s kamenem a dřevem, proměny před a po.",
+    "Fotogalerie zahrad, které jsme navrhli, založili nebo o ně pečujeme — hotové zahrady, záhony a výsadby, práce s kamenem a dřevem.",
   alternates: { canonical: absoluteUrl("/galerie/") },
 };
 
-export default function Galerie() {
+/* Rozdáno skillem: moment photo-chapters (#svah). Žádná fotka se na stránce
+   neopakuje: hero, tři kapitoly svahu, 16 fotek galerie a závěr jsou různé. */
+
+/** Kapitoly fotek: na šířku obsahu, na tabletu a telefonu na výšku ořez do vysokého rámečku. */
+const CHAPTER_SIZES = "(min-width: 1280px) 1280px, (min-width: 1024px) 100vw, (orientation: portrait) 200vw, 100vw";
+
+export default function GaleriePage() {
   return (
-    <>
-      <section>
-        <Container className="py-14 sm:py-16">
-          <SectionHeading
-            as="h1"
-            eyebrow="Galerie"
-            title="Naše práce v obrazech"
-            lead="Všechny fotky jsou z našich zahrad v Jihočeském kraji — žádná ilustrační, žádná z fotobanky."
-          />
-          <nav aria-label="Kategorie galerie" className="mt-8 flex flex-wrap gap-2">
-            {[...KATEGORIE.map((k) => ({ id: k.id, nazev: k.nazev })), { id: "promeny", nazev: "Před a po" }].map(
-              (k) => (
-                <a
-                  key={k.id}
-                  href={`#${k.id}`}
-                  className="rounded-full border border-line bg-paper px-4 py-2 text-sm font-medium text-muted transition-colors hover:border-moss hover:text-ink"
-                >
-                  {k.nazev}
-                </a>
-              ),
-            )}
-          </nav>
-        </Container>
-      </section>
+    <Site current="galerie" close={{ foto: "pozemek-pred-realizaci", alt: alt("pozemek-pred-realizaci") }}>
+      <HeroSplit
+        kicker="Ing. Šimon Suchý · České Budějovice"
+        title="Galerie našich zahrad"
+        lead="Všechny fotky jsou z našich zahrad v Jihočeském kraji — žádná ilustrační, žádná z fotobanky."
+        primary={AKCE}
+        secondary={ZAVOLAT}
+        foto="chodnik-zahony-trvalek"
+        pos="50% 55%"
+      />
 
-      <section className="border-t border-line bg-sunken/30">
-        <Container className="pb-16 pt-4 sm:pb-20">
-          <GalerieClient />
-
-          {/* Proměny — před a po */}
-          <section
-            id="promeny"
-            aria-labelledby="galerie-promeny"
-            className="scroll-mt-24 py-8"
-          >
-            <h2
-              id="galerie-promeny"
-              className="font-display text-2xl font-medium text-ink"
-            >
-              Před a po
-            </h2>
-            <p className="mt-1 max-w-2xl text-muted">
-              Stejné místo, stejný úhel — jen s odstupem času. Táhněte
-              posuvníkem.
-            </p>
-            <div className="mt-6 grid gap-10 lg:grid-cols-2">
-              {PROMENY.map((p) => (
-                <BeforeAfter
-                  key={p.pred}
-                  pred={p.pred}
-                  po={p.po}
-                  altPred={p.altPred}
-                  altPo={p.altPo}
-                  popisek={p.popisek}
-                  sizes="(min-width: 1024px) 34rem, 100vw"
-                />
-              ))}
-            </div>
-          </section>
-
-          <div className="mt-10 rounded-card border border-line bg-paper p-8 text-center shadow-soft">
-            <h2 className="font-display text-2xl font-medium text-ink">
-              Chcete podobnou zahradu?
-            </h2>
-            <p className="mx-auto mt-2 max-w-md text-muted">
-              Napište nám, co se Vám v galerii líbilo — bude to dobrý začátek
-              první schůzky.
-            </p>
-            <Link
-              href="/kontakt/#poptavka"
-              className="mt-6 inline-block rounded-full bg-moss px-8 py-3.5 font-semibold text-white shadow-soft transition-colors hover:bg-moss-deep"
-            >
-              Nezávazná poptávka
-            </Link>
+      <section className="section" id="svah" data-moment="photo-chapters" aria-labelledby="svah-h">
+        <div className="wrap mo-ph">
+          <div className="mo-ph__head">
+            <h2 id="svah-h">Proměna zahrady ve svahu</h2>
+            <p>Svah mezi břízami od terénních úprav po hotovou zpevněnou plochu.</p>
           </div>
-        </Container>
+          <ol className="mo-ph__list">
+            {SVAH.map((ch) => (
+              <li className="mo-ph__ch" key={ch.foto}>
+                <figure className="mo-ph__pic">
+                  <Photo name={ch.foto} alt={alt(ch.foto)} sizes={CHAPTER_SIZES} />
+                </figure>
+                <h3>{ch.title}</h3>
+                <p>{ch.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
-    </>
+
+      <Galerie />
+    </Site>
   );
 }
