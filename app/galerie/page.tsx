@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import Photo from "@/components/Photo";
@@ -7,12 +7,12 @@ import Galerie from "@/components/Galerie";
 import { alt } from "@/data/fotky";
 import { SVAH } from "@/data/galerie";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = stranka({
   title: "Galerie",
   description:
     "Fotogalerie zahrad, které jsme navrhli, založili nebo o ně pečujeme — hotové zahrady, záhony a výsadby, práce s kamenem a dřevem.",
-  alternates: { canonical: absoluteUrl("/galerie/") },
-};
+  path: "/galerie/",
+});
 
 /* Rozdáno skillem: moment photo-chapters (#svah). Žádná fotka se na stránce
    neopakuje: hero, tři kapitoly svahu, 16 fotek galerie a závěr jsou různé. */

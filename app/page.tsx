@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { absoluteUrl, withBase } from "@/config";
+import { SITE, withBase } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import Photo, { sizesFor } from "@/components/Photo";
 import { alt } from "@/data/fotky";
 import { SLUZBY } from "@/data/sluzby";
 
-export const metadata: Metadata = {
-  alternates: { canonical: absoluteUrl("/") },
-};
+export const metadata: Metadata = stranka({ description: SITE.description, path: "/" });
 
 /* Rozdáno skillem (moments.mjs pick --page service --count 2):
    picture-develops (#o-nas) a photo-chapters (#promena). Hero nese původní úvodní fotku

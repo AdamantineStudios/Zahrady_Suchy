@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { withBase } from "@/config";
 import Site, { AKCE } from "@/components/Site";
 import { alt } from "@/data/fotky";
+
+export const metadata: Metadata = {
+  title: "Stránka nenalezena",
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

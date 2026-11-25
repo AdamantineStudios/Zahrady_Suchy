@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import Photo, { sizesFor, type PhotoName } from "@/components/Photo";
@@ -7,12 +7,12 @@ import Faq from "@/components/Faq";
 import { alt } from "@/data/fotky";
 import { FAQ_UDRZBA } from "@/data/faq";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = stranka({
   title: "Údržba zeleně",
   description:
     "Údržba zeleně v Českých Budějovicích a Jihočeském kraji — péče o trvalkové záhony a trávníky, řez keřů, řez a kácení stromů. Pravidelně i jednorázově.",
-  alternates: { canonical: absoluteUrl("/udrzba-zelene/") },
-};
+  path: "/udrzba-zelene/",
+});
 
 /* Rozdáno skillem: moment picture-develops (#pece, vzhled „film"). */
 

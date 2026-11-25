@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SITE, absoluteUrl } from "@/config";
+import { SITE } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import type { CSSProperties } from "react";
@@ -7,12 +8,12 @@ import Photo, { sizesFor } from "@/components/Photo";
 import { KopirovatPoptavku, OdeslaniPoptavky } from "@/components/Poptavka";
 import { alt } from "@/data/fotky";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = stranka({
   title: "Kontakt",
   description:
     "Kontakt na Zahrady Suchý — Ing. Šimon Suchý, České Budějovice. Telefon, e-mail a nezávazná poptávka návrhu, realizace nebo údržby zahrady.",
-  alternates: { canonical: absoluteUrl("/kontakt/") },
-};
+  path: "/kontakt/",
+});
 
 /* Rozdáno skillem: moment word-highlight (#kdo-jsem, Šimonova slova doslova, vedle fotky jeho práce).
    Formulář podle kitu (form.form): kontroluje ho system.js; platný formulář otevře poštovní

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import Photo, { sizesFor, type PhotoName } from "@/components/Photo";
@@ -7,12 +7,12 @@ import Faq from "@/components/Faq";
 import { alt } from "@/data/fotky";
 import { FAQ_REALIZACE } from "@/data/faq";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = stranka({
   title: "Realizace zahrad",
   description:
     "Realizace zahrad v Českých Budějovicích a Jihočeském kraji — terénní úpravy, výsadby dřevin a trvalek, trávníky, práce se dřevem, kamenem, kovem a vodou.",
-  alternates: { canonical: absoluteUrl("/realizace-zahrad/") },
-};
+  path: "/realizace-zahrad/",
+});
 
 /* Rozdáno skillem: moment pinned-chapters (#co-umime) — sekce drží na
    obrazovce, zatímco se posouvají čtyři kroky; fotka vpravo se mění s nimi. */

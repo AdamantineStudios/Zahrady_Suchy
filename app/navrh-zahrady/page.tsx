@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/config";
+import { stranka } from "@/meta";
 import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import Photo from "@/components/Photo";
@@ -8,12 +8,12 @@ import Faq from "@/components/Faq";
 import { alt } from "@/data/fotky";
 import { FAQ_NAVRH } from "@/data/faq";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = stranka({
   title: "Návrh zahrady",
   description:
     "Návrhy zahrad v Českých Budějovicích a Jihočeském kraji. Projekt, díky kterému si představíte svou budoucí zahradu — a společně ho doladíme podle Vašich představ.",
-  alternates: { canonical: absoluteUrl("/navrh-zahrady/") },
-};
+  path: "/navrh-zahrady/",
+});
 
 /* Rozdáno skillem: moment word-highlight (#slovo). Šimonův odstavec o návrhu
    je rozdělený: první věta v #projekt, druhá jako výrok v #slovo (doslova). */

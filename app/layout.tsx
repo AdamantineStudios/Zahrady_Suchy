@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Lora, Nunito_Sans } from "next/font/google";
 import { SITE, absoluteUrl, withBase } from "@/config";
+import { HOME_TITLE, OG_BASE } from "@/meta";
 import JsonLd from "@/components/JsonLd";
 import KitRuntime from "@/components/KitRuntime";
 import "./globals.css";
@@ -22,22 +23,23 @@ const nunito = Nunito_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   title: {
-    default: `${SITE.name} — návrhy, realizace a údržba zahrad`,
+    default: HOME_TITLE,
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
-  openGraph: {
-    type: "website",
-    siteName: SITE.name,
-    locale: "cs_CZ",
-    title: `${SITE.name} — návrhy, realizace a údržba zahrad`,
-    description: SITE.description,
-    images: [
-      { url: absoluteUrl("/og.jpg"), width: 1200, height: 630, alt: SITE.name },
-    ],
-  },
+  openGraph: { ...OG_BASE, title: HOME_TITLE, description: SITE.description },
   twitter: { card: "summary_large_image" },
-  icons: { apple: withBase("/apple-icon.png") },
+  // ikony vypsané celé: favicon.ico pro Safari a starší prohlížeče (SVG ikonu neumí), SVG pro
+  // ostatní, apple-touch-icon pro plochu iPhonu — vše pod basePath, ať funguje i na github.io
+  icons: {
+    icon: [
+      { url: withBase("/favicon.ico"), sizes: "32x32" },
+      { url: withBase("/icon.svg"), type: "image/svg+xml" },
+    ],
+    apple: withBase("/apple-icon.png"),
+  },
+  // iPhone jinak dělá z IČO v patičce odkaz na volání; telefon je odkazem i tak (tel:)
+  formatDetection: { telephone: false },
   robots: { index: true, follow: true },
   // druh stránky pro kit taste-skill (služba, ne technologie)
   other: { "page-type": "service", "site-kind": "other" },
