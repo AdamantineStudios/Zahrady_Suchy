@@ -4,7 +4,7 @@ import Site, { AKCE, ZAVOLAT } from "@/components/Site";
 import HeroSplit from "@/components/HeroSplit";
 import type { CSSProperties } from "react";
 import Photo, { sizesFor } from "@/components/Photo";
-import KopirovatPoptavku from "@/components/KopirovatPoptavku";
+import { KopirovatPoptavku, OdeslaniPoptavky } from "@/components/Poptavka";
 import { alt } from "@/data/fotky";
 
 export const metadata: Metadata = {
@@ -15,11 +15,10 @@ export const metadata: Metadata = {
 };
 
 /* Rozdáno skillem: moment word-highlight (#kdo-jsem, Šimonova slova doslova, vedle fotky jeho práce).
-   Formulář podle kitu (form.form): kontroluje ho system.js a bez data-endpoint
-   ho prohlížeč odešle sám — otevře poštovní aplikaci (mailto) s vyplněnými
-   poli. Žádné „Děkujeme" bez skutečného odeslání. */
-
-const PREDMET = encodeURIComponent("Poptávka z webu");
+   Formulář podle kitu (form.form): kontroluje ho system.js; platný formulář otevře poštovní
+   aplikaci s připravenou zprávou (OdeslaniPoptavky ji sestaví stejně v každém prohlížeči,
+   bez JavaScriptu ji odešle prohlížeč sám přes mailto v action). Žádné „Děkujeme" bez
+   skutečného odeslání. */
 
 export default function Kontakt() {
   return (
@@ -60,7 +59,7 @@ export default function Kontakt() {
               <form
                 className="form"
                 id="poptavka-form"
-                action={`mailto:${SITE.email}?subject=${PREDMET}`}
+                action={`mailto:${SITE.email}?subject=${encodeURIComponent(SITE.predmetPoptavky)}`}
                 method="post"
                 encType="text/plain"
                 noValidate
@@ -104,6 +103,7 @@ export default function Kontakt() {
                     {AKCE.label}
                   </button>
                   <KopirovatPoptavku formId="poptavka-form" />
+                  <OdeslaniPoptavky formId="poptavka-form" />
                 </div>
                 <p className="form__status" role="status" data-form-status></p>
                 <p className="t-small">

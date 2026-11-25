@@ -8,6 +8,8 @@ export const SITE = {
     "Návrhy, realizace a údržba zahrad v Českých Budějovicích a po celém Jihočeském kraji. Terénní úpravy, výsadby dřevin a trvalek, trávníky i práce se dřevem, kamenem, kovem a vodou.",
   /** E-mail, kam chodí poptávky. Změna = jeden řádek tady. */
   email: "simon@zahradysuchy.cz",
+  /** Předmět e-mailu z formuláře poptávky (s JavaScriptem doplněný o vybranou službu). */
+  predmetPoptavky: "Poptávka z webu",
   telefon: "+420 721 050 997",
   telefonHref: "+420721050997",
   adresa: { ulice: "Zahradní 786/19", mesto: "370 05 České Budějovice" },

@@ -171,6 +171,15 @@
   .split-fill > .foto-col { flex: 1 1 auto; }
   .foto-col > .col-foto { flex: 1 1 auto; min-height: 240px; }
 }
+/* Poptávka na tabletu a telefonu: pod nadpisem hned formulář, fotka až za ním. Kdo přijde
+   tlačítkem „Domluvit schůzku", vidí pole hned — a fotka nestojí těsně pod skoro stejnou
+   fotkou z úvodu (stejná zahrada). Na počítači zůstává text a fotka vlevo, formulář vpravo. */
+@media (max-width: 1023px) {
+  #poptavka .foto-col { display: contents; }
+  #poptavka .foto-col > .section-head { order: 1; }
+  #poptavka .form-panel { order: 2; }
+  #poptavka .foto-col > .col-foto { order: 3; }
+}
 
 
 /* Poptávka: formulář na druhém podkladu, 48 px odsazení (kit, booking-form) */
