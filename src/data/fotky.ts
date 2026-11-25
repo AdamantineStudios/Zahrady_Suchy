@@ -51,7 +51,7 @@ export const FOTKY: Partial<Record<PhotoName, string>> = {
   "sterkova-plocha-hotovo":
     "Dokončená zpevněná štěrková plocha ve svahu mezi břízami",
   "rez-stromu-vyska":
-    "Výškový řez borovice z žebříku",
+    "Výškový řez borovice ze žebříku",
   "kaceni-jehlicnanu":
     "Postupné kácení vzrostlého jehličnanu",
   "prorezavka-keru":

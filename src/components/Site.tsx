@@ -88,8 +88,7 @@ function Closing({ close }: { close: Close }) {
             <div>
               <h2 id="close-h">Pojďme se potkat nad Vaší zahradou</h2>
               <p className="t-lead">
-                Všechno začíná nezávaznou schůzkou u Vás na zahradě. Probereme Vaše představy a
-                možnosti, jak je uskutečnit.
+                Všechno začíná nezávaznou schůzkou u&nbsp;Vás na zahradě. Probereme Vaše představy a&nbsp;možnosti, jak je uskutečnit.
               </p>
             </div>
             <a className="btn btn--primary" href={withBase(AKCE.href)}>
@@ -110,7 +109,7 @@ function Closing({ close }: { close: Close }) {
             <div className="span-4 stack-4">
               <Logo />
               <p className="footer__lede">
-                Návrhy, realizace a údržba zahrad. Z Českých Budějovic pro celý Jihočeský kraj.
+                Návrhy, realizace a&nbsp;údržba zahrad. Z&nbsp;Českých Budějovic pro celý Jihočeský kraj.
               </p>
             </div>
             <div className="span-2 footer__col">
@@ -133,7 +132,7 @@ function Closing({ close }: { close: Close }) {
               <ul>
                 <li><a href={`tel:${SITE.telefonHref}`}>{SITE.telefon}</a></li>
                 <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
-                <li>České Budějovice a celý Jihočeský kraj</li>
+                <li>České Budějovice a&nbsp;celý Jihočeský kraj</li>
               </ul>
             </div>
           </div>

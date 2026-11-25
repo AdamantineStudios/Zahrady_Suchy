@@ -26,7 +26,7 @@ export default function GaleriePage() {
       <HeroSplit
         kicker="Ing. Šimon Suchý · České Budějovice"
         title="Galerie našich zahrad"
-        lead="Všechny fotky jsou z našich zahrad v Jihočeském kraji — žádná ilustrační, žádná z fotobanky."
+        lead="Všechny fotky jsou z&nbsp;našich zahrad v&nbsp;Jihočeském kraji — žádná ilustrační, žádná z&nbsp;fotobanky."
         primary={AKCE}
         secondary={ZAVOLAT}
         foto="chodnik-zahony-trvalek"

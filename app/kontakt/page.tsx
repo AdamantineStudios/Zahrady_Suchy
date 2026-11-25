@@ -26,8 +26,8 @@ export default function Kontakt() {
     <Site current="kontakt" close={{ foto: "posezeni-pod-brizou", alt: alt("posezeni-pod-brizou") }}>
       <HeroSplit
         kicker="Ing. Šimon Suchý · České Budějovice"
-        title="Schůzka přímo u Vás na zahradě"
-        lead="Zavolejte, napište, nebo pošlete poptávku formulářem — ozveme se Vám co nejdřív. Jezdíme po Českých Budějovicích a celém Jihočeském kraji."
+        title="Schůzka přímo u&nbsp;Vás na zahradě"
+        lead="Zavolejte, napište nebo pošlete poptávku formulářem — ozveme se Vám co nejdřív. Jezdíme po Českých Budějovicích a&nbsp;celém Jihočeském kraji."
         primary={AKCE}
         secondary={ZAVOLAT}
         foto="kruhove-posezeni-spalky"
@@ -39,10 +39,10 @@ export default function Kontakt() {
           <div className="grid fill split-fill">
             <div className="split-col foto-col span-5">
               <div className="section-head">
-                <h2 id="poptavka-h">Napište nám o Vaší zahradě</h2>
+                <h2 id="poptavka-h">Napište nám o&nbsp;Vaší zahradě</h2>
                 <p>
-                  Formulář otevře Vaši poštovní aplikaci s připravenou zprávou. Ozveme se a domluvíme si
-                  schůzku u Vás na zahradě. Můžete také zavolat na{" "}
+                  Formulář otevře Vaši poštovní aplikaci s&nbsp;připravenou zprávou. Ozveme se a&nbsp;domluvíme si
+                  schůzku u&nbsp;Vás na zahradě. Můžete také zavolat na{" "}
                   <a href={`tel:${SITE.telefonHref}`}>{SITE.telefon}</a> nebo napsat na{" "}
                   <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
                 </p>
@@ -87,7 +87,7 @@ export default function Kontakt() {
                     <option value="">Vyberte službu</option>
                     <option>Návrh zahrady</option>
                     <option>Realizace zahrady</option>
-                    <option>Návrh i realizace</option>
+                    <option>Návrh i&nbsp;realizace</option>
                     <option>Údržba zeleně</option>
                     <option>Něco jiného</option>
                   </select>
@@ -96,7 +96,7 @@ export default function Kontakt() {
                   <label htmlFor="f-zprava">Zpráva</label>
                   <textarea id="f-zprava" name="Zpráva" rows={4} required aria-describedby="f-zprava-err" />
                   <p className="field__error" id="f-zprava-err" hidden>
-                    Napište prosím pár slov o Vaší zahradě.
+                    Napište prosím pár slov o&nbsp;Vaší zahradě.
                   </p>
                 </div>
                 <div className="btn-row">
@@ -107,8 +107,8 @@ export default function Kontakt() {
                 </div>
                 <p className="form__status" role="status" data-form-status></p>
                 <p className="t-small">
-                  Neotevřela se pošta? Zkopírujte text poptávky a pošlete ho na {SITE.email}. Web nepoužívá
-                  cookies a nic z formuláře neukládá.
+                  Neotevřela se pošta? Zkopírujte text poptávky a&nbsp;pošlete ho na {SITE.email}. Web nepoužívá
+                  cookies a&nbsp;nic z&nbsp;formuláře neukládá.
                 </p>
               </form>
             </div>
@@ -120,15 +120,15 @@ export default function Kontakt() {
         <div className="wrap">
           <div className="grid fill split-fill">
             <div className="span-5 kdo-jsem">
-              <h2 id="kdo-jsem-h">Kdo se o Vaši zahradu postará</h2>
+              <h2 id="kdo-jsem-h">Kdo se o&nbsp;Vaši zahradu postará</h2>
               <p className="mo-wh__text">
-                Tvorba zahrad je nejen prací, ale i <strong>vášní a zálibou</strong>. Rád se postavím novým
+                Tvorba zahrad je nejen prací, ale i&nbsp;<strong>vášní a&nbsp;zálibou</strong>. Rád se postavím novým
                 výzvám, které skýtají neotřelé požadavky klientů.
               </p>
               <p>
-                Svá studia jsem prožil na Moravě. Na Zahradnické fakultě Mendelovy univerzity v Brně jsem
-                získal inženýrský titul v oboru zahradní a krajinné realizace v programu Zahradní a krajinné
-                architektury. Moje srdce však patří do jižních Čech. Miluju naši krajinu a přírodu, ze které
+                Svá studia jsem prožil na Moravě. Na Zahradnické fakultě Mendelovy univerzity v&nbsp;Brně jsem
+                získal inženýrský titul v&nbsp;oboru zahradní a&nbsp;krajinné realizace v&nbsp;programu Zahradní a&nbsp;krajinné
+                architektury. Moje srdce však patří do jižních Čech. Miluju naši krajinu a&nbsp;přírodu, ze které
                 čerpám inspiraci při tvorbě zahrad.
               </p>
               <p className="muted">Ing. Šimon Suchý</p>

@@ -19,11 +19,11 @@ export const metadata: Metadata = {
    je rozdělený: první věta v #projekt, druhá jako výrok v #slovo (doslova). */
 
 const RESIME = [
-  "Rozvržení ploch, cest a posezení",
-  "Terasy, vodní prvky a zahradní stavby",
-  "Osazovací plán dřevin a trvalek",
-  "Trávník — výsev, nebo travní koberec",
-  "Materiály: dřevo, kámen, kov a voda",
+  "Rozvržení ploch, cest a\u00a0posezení",
+  "Terasy, vodní prvky a\u00a0zahradní stavby",
+  "Osazovací plán dřevin a\u00a0trvalek",
+  "Trávník — výsev nebo travní koberec",
+  "Materiály: dřevo, kámen, kov a\u00a0voda",
   "Úpravy návrhu podle Vašich připomínek",
 ];
 
@@ -33,7 +33,7 @@ export default function NavrhZahrady() {
       <HeroSplit
         kicker="Ing. Šimon Suchý · České Budějovice"
         title="Návrh Vaší budoucí zahrady"
-        lead="Navrhujeme zahrady v Českých Budějovicích a po celém Jihočeském kraji. Návrh vzniká až po schůzce u Vás na zahradě."
+        lead="Navrhujeme zahrady v&nbsp;Českých Budějovicích a&nbsp;po celém Jihočeském kraji. Návrh vzniká až po schůzce u&nbsp;Vás na zahradě."
         primary={AKCE}
         secondary={ZAVOLAT}
         foto="zahon-u-terasy-gabiony"
@@ -45,7 +45,7 @@ export default function NavrhZahrady() {
           <div className="grid fill split-fill">
             <div className="span-5">
               <div className="section-head">
-                <h2 id="projekt-h">Co v návrhu zahrady řešíme</h2>
+                <h2 id="projekt-h">Co v&nbsp;návrhu zahrady řešíme</h2>
                 <p>
                   Každé realizaci předchází projekt, díky kterému si lépe dokážete představit, jak bude
                   Vaše zahrada vypadat.
@@ -74,10 +74,10 @@ export default function NavrhZahrady() {
       <section className="section statement" id="slovo" data-moment="word-highlight" aria-labelledby="slovo-h">
         <div className="wrap">
           <h2 className="t-label" id="slovo-h">
-            Návrh zahrady s Vámi
+            Návrh zahrady s&nbsp;Vámi
           </h2>
           <p className="mo-wh__text">
-            V tomto kroku je možné diskutovat o různých změnách a úpravách, aby výsledek naplňoval co
+            V&nbsp;tomto kroku je možné diskutovat o&nbsp;různých změnách a&nbsp;úpravách, aby výsledek naplňoval co
             nejvěrněji <strong>Vaše představy</strong>.
           </p>
           <div className="frame frame--photo fit statement-foto">
@@ -92,7 +92,7 @@ export default function NavrhZahrady() {
         </div>
       </section>
 
-      <Faq title="Otázky k návrhu zahrady" items={FAQ_NAVRH} foto="dvorek-lavicky" />
+      <Faq title="Otázky k&nbsp;návrhu zahrady" items={FAQ_NAVRH} foto="dvorek-lavicky" />
     </Site>
   );
 }

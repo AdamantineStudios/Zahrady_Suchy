@@ -29,8 +29,8 @@ export const KATEGORIE: GalerieKategorie[] = [
   },
   {
     id: "vysadby",
-    nazev: "Zahradní záhony a výsadby",
-    uvod: "Trvalkové záhony, trávy a dřeviny krátce po výsadbě i v plné síle.",
+    nazev: "Zahradní záhony a\u00a0výsadby",
+    uvod: "Trvalkové záhony, trávy a\u00a0dřeviny krátce po výsadbě i\u00a0v\u00a0plné síle.",
     fotky: [
       "zahon-denivky-detail",
       "zahon-u-terasy-gabiony",
@@ -42,8 +42,8 @@ export const KATEGORIE: GalerieKategorie[] = [
   },
   {
     id: "kamen-a-drevo",
-    nazev: "Kámen a dřevo v zahradě",
-    uvod: "Suché zídky, štěrkové záhony a schody z pražců — přírodní materiály a ruční práce.",
+    nazev: "Kámen a\u00a0dřevo v\u00a0zahradě",
+    uvod: "Suché zídky, štěrkové záhony a\u00a0schody z\u00a0pražců — přírodní materiály a\u00a0ruční práce.",
     fotky: [
       "sucha-zidka-stavba",
       "sterkovy-zahon-balvany",
@@ -58,16 +58,16 @@ export const SVAH = [
   {
     foto: "terenni-upravy-svah",
     title: "Terénní úpravy zahrady",
-    text: "Svah mezi břízami se nejdřív upravil a připravil pro novou plochu.",
+    text: "Svah mezi břízami se nejdřív upravil a\u00a0připravil pro novou plochu.",
   },
   {
     foto: "sterkova-plocha-svah",
-    title: "Štěrková plocha v zahradě",
-    text: "Štěrková plocha s ocelovou obrubou se zapustila do svahu.",
+    title: "Štěrková plocha v\u00a0zahradě",
+    text: "Štěrková plocha s\u00a0ocelovou obrubou se zapustila do svahu.",
   },
   {
     foto: "sterkova-plocha-hotovo",
     title: "Hotová zahrada ve svahu",
-    text: "Zpevněná štěrková plocha mezi břízami, připravená k posezení.",
+    text: "Zpevněná štěrková plocha mezi břízami, připravená k\u00a0posezení.",
   },
 ] as const satisfies readonly { foto: PhotoName; title: string; text: string }[];
